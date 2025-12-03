@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionebiblioteca;
+package biblioteca.main;
 
 /**
  *
  * @author Giuseppe
  */
-public interface ValidaDati {
+public class ValidaDatiUtente {
     
 }
