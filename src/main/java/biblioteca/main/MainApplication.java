@@ -1,4 +1,4 @@
-package gestionebiblioteca;
+package biblioteca.main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  *
  * @author Giuseppe
  */
-public class GestioneBiblioteca extends Application {
+public class MainApplication extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
