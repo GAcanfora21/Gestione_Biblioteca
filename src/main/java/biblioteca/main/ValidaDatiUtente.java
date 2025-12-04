@@ -14,7 +14,7 @@ package biblioteca.main;
  * @see FC-5
  * @author Enrico
  * @date December 02, 2025
- * @Version 1.0
+ * @version 1.0
  */
 public class ValidaDatiUtente implements ValidaDati<Utente>{
     
@@ -65,7 +65,7 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      * 
      * @see FC-4
      */
-    public boolean verificaUnicitàMatricola(Utente utente){
+    public boolean verificaUnicitaMatricola(Utente utente){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -12,7 +12,7 @@ package biblioteca.main;
  * @see IF-11
  * @author Enrico
  * @date December 02, 2025
- * @Version 1.0
+ * @version 1.0
  */
 public class ValidaDatiPrestito implements ValidaDati<Prestito>{
     
@@ -29,7 +29,6 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * @see verificaLimitePrestito(Utente utente)
      * @see verificaDisponibilitàCopie(Libro libro)
      */
-    @Override
     public boolean isValido(Prestito prestito){
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -61,7 +60,7 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * 
      * @see IF-11
      */
-    public boolean verificaDisponibilitàCopie(Libro libro){
+    public boolean verificaDisponibilitaCopie(Libro libro){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

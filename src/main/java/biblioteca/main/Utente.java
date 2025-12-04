@@ -8,8 +8,21 @@ package biblioteca.main;
 import java.util.List;
 
 /**
- *
- * @author Giuseppe
+ * @file Utente.java
+ * @brief Definisce attributi e metodi della classe Utente
+ * 
+ * @invariant nome != null
+ * @invariant cognome != null
+ * @invariant matricola != null
+ * @invariant email != null
+ * @invariant prestitiAttivi != null
+ * 
+ * @see Prestito
+ * @see DF-1
+ * @see IF-8
+ * @author Lorenzo
+ * @date December 04, 2025
+ * @version 1.0
  */
 public class Utente {
     private String nome;
@@ -38,6 +51,27 @@ public class Utente {
     public List<Prestito> getPrestitiAttivi(){
         return this.prestitiAttivi;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setMatricola(String matricola) {
+        this.matricola = matricola;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPrestitiAttivi(List<Prestito> prestitiAttivi) {
+        this.prestitiAttivi = prestitiAttivi;
+    }
+    
     
     /**
      * @brief Aggiungi il prestito.

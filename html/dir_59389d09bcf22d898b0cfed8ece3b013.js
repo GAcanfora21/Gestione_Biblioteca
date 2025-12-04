@@ -1,0 +1,8 @@
+var dir_59389d09bcf22d898b0cfed8ece3b013 =
+[
+    [ "GestioneBiblioteca.java", "_gestione_biblioteca_8java.html", "_gestione_biblioteca_8java" ],
+    [ "Prestito.java", "_prestito_8java.html", "_prestito_8java" ],
+    [ "ValidaDatiLibro.java", "_valida_dati_libro_8java.html", "_valida_dati_libro_8java" ],
+    [ "ValidaDatiPrestito.java", "_valida_dati_prestito_8java.html", "_valida_dati_prestito_8java" ],
+    [ "ValidaDatiUtente.java", "_valida_dati_utente_8java.html", "_valida_dati_utente_8java" ]
+];

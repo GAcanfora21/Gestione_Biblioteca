@@ -17,20 +17,12 @@ package biblioteca.main;
  * @see ValidaDati
  * @author Giuseppe
  * @date December 03, 2025
- * @Version 1.0
+ * @version 1.0
  */
 public class ValidaDatiLibro implements ValidaDati<Libro> {
     
     
     
-    
-    /**
-     * @brief costruttore di ValidaDatiLibro.
-     * @post messaggioErrore == "", alla creazione il libro è privo di errore.
-     */
-    public ValidaDatiLibro(){
-        //
-    }
     
     
     
@@ -44,10 +36,9 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @pre libro != null.
      * @post se return == false stampa messaggioErrore().
      * 
-     * @param[in] libro, il libro da validare.
+     * @param[in] libro il libro da validare.
      * @return 'true' se il libro supera tutti i controlli, 'false' altrimenti.
      */
-    @Override
     public boolean isValido(Libro libro){
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -61,7 +52,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * 
      * @pre 'codice != null', il parametro d'ingresso deve essere non nullo.
      * 
-     * @param[in] codice, codice da validare.
+     * @param[in] codice codice da validare.
      * @return 'true' se il formato codice è corretto, 'false' altrimenti.
      */
     private boolean verificaCodiceIdentificativo(String codice){
@@ -73,7 +64,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * 
      * @pre 'codice != null' il parametro d'ingresso deve essere non nullo.
      * 
-     * @param[in] codice, codice da validare.
+     * @param[in] codice codice da validare.
      * @return 'true' se il codice è univoco, 'false' altrimenti.
      */
     private boolean verificaUnicitaCodice(String codice){
