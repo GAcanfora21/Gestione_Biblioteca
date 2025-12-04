@@ -9,9 +9,9 @@ import javafx.collections.ObservableList;
 
 /**
  * @file GestioneBiblioteca.java
- * @brief Gestisce l'intero dell'elenco libri   
+ * @brief Gestisce libri, utenti e prestiti.
  * 
- * Questa classe si occupa di aggiungere, modificare, rimuovere e cercare gli Utenti, Libri e Prestiti  
+ * Questa classe si occupa di aggiungere, modificare e rimuovere libri, utenti e prestiti.
  * 
  * @invariant libri != null
  * @invariant utenti != null
@@ -26,16 +26,16 @@ import javafx.collections.ObservableList;
  * 
  * @author Giuseppe
  * @date December 03, 2025
- * @Version 1.0
+ * @version 1.0
  */
 public class GestioneBiblioteca {
     
-    ObservableList<Libro> libri;
-    ObservableList<Utente> utenti;
-    ObservableList<Prestito> prestiti;
+    private ObservableList<Libro> libri;
+    private ObservableList<Utente> utenti;
+    private ObservableList<Prestito> prestiti;
     
     /**
-     * @brief costruttore di GestioneBiblioteca
+     * @brief Costruttore di GestioneBiblioteca.
      * 
      * @post libri != null && libri.isEmpty()
      * @post utenti != null && utenti.isEmpty()
@@ -47,7 +47,7 @@ public class GestioneBiblioteca {
     
     
     /**
-     * @brief restituisce una lista dei libri
+     * @brief Restituisce una lista dei libri
      * 
      * @return ObservableList dei libri
      */
@@ -77,85 +77,84 @@ public class GestioneBiblioteca {
     
     
     /**
-     * @brief questo metodo permette di aggiungere un libro nell'elenco
+     * @brief Aggiunge un libro nell'elenco.
      *  
-     * @param[in] libro, libro da aggiungere
-     * @pre libro != null
-     * @post se 'return == true' allora il libro è stato aggiunto all'elenco
+     * @param[in] libro Libro da aggiungere.
      * 
-     * @return 'true' libro aggiunto con successo, 'false' altrimenti (FC-3)
+     * @pre libro != null
+     * @post Il libro è stato aggiunto all'elenco.
      * 
      * @see IF-1
      * @see FC-3
      */
-    public boolean aggiungiLibro(Libro libro){
+    public void aggiungiLibro(Libro libro){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
     
     /**
-     * @brief questo metodo permette di modificare un libro nell'elenco
+     * @brief Modifica un libro dell'elenco.
      *  
-     * @param[in] vecchioLibro, libro da modificare
-     * @param[inout] nuovoLibro, libro con dati aggiornati
+     * @param[in] vecchioLibro Libro da modificare
+     * @param[inout] nuovoLibro Libro con dati aggiornati
+     * 
      * @pre nuovoLibro != null
      * @pre vecchioLibro != null
-     * @post se 'return == true' allora il vecchioLibro verrà sostituito con i dati aggiornati di nuovoLibro
+     * @post vecchioLibro verrà sostituito con i dati aggiornati di nuovoLibro.
      * 
-     * @return 'true' modificato con successo, 'false' altrimenti
+     * @return 'true' modificato con successo, 'false' altrimenti.
      * 
-     * @see IF-1
-     * @see FC-3
+     * @see IF-2
+     * @see VerificaDatiLibro.java
      */
     public boolean modificaLibro(Libro vecchioLibro, Libro nuovoLibro){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
     /**
-     * @brief questo metodo permette di eliminare un libro nell'elenco
+     * @brief Elimina un libro dell'elenco.
      *  
-     * @param[in] libro, libro da rimuovere
+     * @param[in] libro Libro da rimuovere
      * @pre libro != null
-     * @post se 'return == true' allora il libro è stato rimosso dall'elenco
+     * @pre Il libro da eliminare non deve avere prestiti attivi.
+     * @post Il libro è stato rimosso dall'elenco.
      * 
-     * @return 'true' libro modificato con successo, 'false' altrimenti
-     * 
-     * @see IF-1
+     * @see IF-3
      * @see FC-3
      */
-    public boolean eliminaLibro(Libro libro){
+    public void eliminaLibro(Libro libro){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
     /**
-     * @brief questo metodo permette di aggiungere un utente all'elenco
+     * @brief Aggiunge un utente nell'elenco.
+     *  
+     * @param[in] utente Utente da aggiungere.
      * 
-     * @param[in] utente, utente da aggiugnere
      * @pre utente != null
-     * @post se 'return == true' allora l'utente è stato aggiunto all'elenco
-     * 
-     * @return 'true' utente eliminato con successo, false altrimenti
+     * @post L'utente è stato aggiunto all'elenco.
      * 
      * @see IF-6
      * @see FC4
      * @see FC5
      */
-    public boolean aggiungiUtente(Utente utente){
+    public void aggiungiUtente(Utente utente){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
     /**
-     * @brief questo metodo permette di modificare un utente all'elenco
+     * @brief Modifica un utente dell'elenco.
+     *  
+     * @param[in] vecchioUtente Utente da modificare
+     * @param[inout] nuovoUtente Utente con dati aggiornati
      * 
-     * @param[in] vecchioUtente, utente da modificare
-     * @param[inout] nuovoUtente, utente con dati aggiornati
-     * @pre vecchioUtente != null
      * @pre nuovoUtente != null
-     * @post se 'return == true' allora vecchioUtente verrà aggiornato con i dati aggiornati di nuovoUtente
+     * @pre vecchioUtente != null
+     * @post vecchioUtente verrà sostituito con i dati aggiornati di nuovoUtente.
      * 
-     * @return 'true' utente modificato con successo, false altrimenti
+     * @return 'true' se l'utente è stato modificato con successo, 'false' altrimenti.
      * 
-     * @see IF-6
+     * @see IF-7
      * @see FC4
      * @see FC5
      */
@@ -164,26 +163,22 @@ public class GestioneBiblioteca {
     }
 
     /**
-     * @brief questo metodo permette di aggiungere un utente all'elenco
+     * @brief Elimina un utente dell'elenco.
      * 
-     * @param[in] utente, utente da rimuovere
+     * @param[in] utente Utente da rimuovere
      * @pre utente != null
-     * @post se 'return == true' allora l'utente è stato rimosso all'elenco
+     * @post se 'return == true' allora l'utente è stato rimosso dall'elenco
      * 
-     * @return 'true' utente eliminato con successo, false altrimenti
-     * 
-     * @see IF-6
-     * @see FC4
-     * @see FC5
+     * @see IF-8
      */
     public boolean eliminaUtente(Utente utente){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
     /**
-     * @brief questo metodo registra un nuovo prestito
+     * @brief Registra un nuovo prestito.
      * 
-     * @param[in] prestito, prestito da registrare
+     * @param[in] prestito Prestito da registrare
      * @pre prestito != null
      * @pre prestito.getLibro().getNumCopie() > 0 
      * @pre prestito.getUtente().getPrestitiAttivi().size() < 3
@@ -202,32 +197,30 @@ public class GestioneBiblioteca {
     }
     
     /**
-     * @brief questo metodo registra la restituzione di un prestito
+     * @brief Registra la restituzione di un prestito.
      * 
-     * @param[inout] prestito, prestito da registrare come restituito
+     * @param[inout] prestito Prestito da registrare come restituito
      * @pre prestito != null
      * @pre prestito.getAttivo() == true
      * @post se 'return == true' prestito.getAttivo() == false
      * @post se 'return == true' libro.numCopie viene incrementato di 1
      * @post se 'return == true' il prestito viene tolto da utenti.prestitiAttivi
      * 
-     * @return 'true' prestito restituito con successo, 'false' altrimenti
-     * 
      * @see IF-13
-     * @see regisraPrestito()
+     * @see registraPrestito()
      */
     public boolean registraRestituzione(Prestito prestito){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
     /**
-     * @brief cerca un libro nell'archivio per ...
+     * @brief Cerca un libro nell'elenco.
      * 
-     * @param[in] 
-     * @pre 
+     * @param[in] str La stringa(titolo/autore/codice identificativo) contenuta nel libro desiderato.
+     * @pre str != null
      * 
      * 
-     * @return viene ritorna il valore del libro trovato tramite codice
+     * @return Una lista di libri che contengono la stringa in almeno uno dei loro campi.
      * 
      * @see IF-5
      * @see ValidaDatiLibro.java
@@ -236,7 +229,18 @@ public class GestioneBiblioteca {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
-    
+    /**
+     * @brief Cerca un utente nell'elenco.
+     * 
+     * @param[in] str La stringa (cognome/matricola) contenuta nel libro desiderato.
+     * @pre str != null
+     * 
+     * 
+     * @return Una lista di utenti che contengono la stringa in almeno uno dei loro campi.
+     * 
+     * @see IF-10
+     * @see ValidaDatiUtente.java
+     */
     public ObservableList<Utente> cercaUtente(String str){
         throw new UnsupportedOperationException("Not supported yet.");
     }

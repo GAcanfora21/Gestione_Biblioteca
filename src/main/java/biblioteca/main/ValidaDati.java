@@ -6,8 +6,13 @@
 package biblioteca.main;
 
 /**
- *
- * @author Giuseppe
+ * @file ValidaDati.java
+ * @brief L'interfaccia verifica la validità di oggetti.
+ * 
+ * 
+ * @author Lorenzo
+ * @date December 04, 2025
+ * @version 1.0
  */
 
 public interface ValidaDati<T> {
@@ -18,7 +23,7 @@ public interface ValidaDati<T> {
      * Il metodo consente di stabilire se l'oggetto rispetta i criteri per
      * essere registrato.
      * 
-     * @param[in] o L'oggetto di cui valutare la validità. 
+     * @param[in] object L'oggetto di cui valutare la validità. 
      * 
      * @return 'true' se l'oggetto soddisfa i requisiti, altrimenti 'false'.
     */
