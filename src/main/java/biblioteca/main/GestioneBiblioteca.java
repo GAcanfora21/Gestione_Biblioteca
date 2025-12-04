@@ -9,9 +9,9 @@ import javafx.collections.ObservableList;
 
 /**
  * @file GestioneBiblioteca.java
- * @brief Gestisce l'intero dell'elenco libri
+ * @brief Gestisce l'intero dell'elenco libri   
  * 
- * Questa classe si occupa di aggiungere, modificare, rimuovere e cercare gli Utenti, Libri e Prestiti
+ * Questa classe si occupa di aggiungere, modificare, rimuovere e cercare gli Utenti, Libri e Prestiti  
  * 
  * @invariant libri != null
  * @invariant utenti != null
@@ -176,7 +176,7 @@ public class GestioneBiblioteca {
      * @see FC4
      * @see FC5
      */
-    public boolean rimuoviUtente(Utente utente){
+    public boolean eliminaUtente(Utente utente){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -240,6 +240,31 @@ public class GestioneBiblioteca {
     public ObservableList<Utente> cercaUtente(String str){
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    
+    /**
+    * @brief Salva l'archivio su file CSV.
+    * 
+    * @param[in] nomeFile Percorso del file.
+    * 
+    * @see IF-15
+    */
+    public void salvaArchivio(String nomeFile) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /**
+     * @brief Carica l'archivio da file CSV.
+     * 
+     * @param[in] nomeFile Percorso del file.
+     * @return 'true' se caricato con successo, false altrimenti.
+     * 
+     * @see IF-16
+     */
+    public boolean caricaArchivio(String nomeFile) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 
 }
 
