@@ -14,7 +14,7 @@ import java.time.LocalDate;
  * 
  * @author Enrico
  * @date December 02, 2025
- * @Version 1.0
+ * @version 1.0
  */
 public class Prestito {
     
@@ -23,6 +23,16 @@ public class Prestito {
     private LocalDate dataRestituzione;
     private boolean attivo;
     
+    /**
+     * @brief Costruttore di Prestito.
+     * 
+     * 
+     * @pre libro != null
+     * @pre utente != null
+     */
+    public Prestito(){
+    
+    }
     
     public Utente getUtente(){
         throw new UnsupportedOperationException("Not supported yet.");
@@ -65,10 +75,7 @@ public class Prestito {
     /**  
      * @brief Imposta lo stato del prestito.
      * 
-     * Il metodo consente di impostare un prestito come non attivo.
-     * 
-     * @pre Il prestito non è attivo.
-     * @post Il prestito sarà ritenuto non attivo.
+     * Il metodo consente di impostare lo stato di un prestito come attivo/non attivo.
      * 
      * @see getAttivo()
      */
