@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['registraprestito_0',['registraPrestito',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#aa140ec62bb44a93f7ce90f233cd15858',1,'biblioteca::main::GestioneBiblioteca']]],
-  ['registrarestituzione_1',['registraRestituzione',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#aeceeafa06eab79a6d703a7f36d8e0e02',1,'biblioteca::main::GestioneBiblioteca']]],
-  ['rimuoviprestito_2',['rimuoviPrestito',['../classbiblioteca_1_1main_1_1_utente.html#afb75c194155bb0a18e02c10c40840f72',1,'biblioteca::main::Utente']]],
-  ['rimuoviutente_3',['rimuoviUtente',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#a3b4c4f7ce778c60b0cb949dce445b392',1,'biblioteca::main::GestioneBiblioteca']]]
+  ['main_0',['main',['../classbiblioteca_1_1main_1_1_main_application.html#ab456306c33d05a9a5cc573cd304f00d1',1,'biblioteca::main::MainApplication']]],
+  ['modificalibro_1',['modificaLibro',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#aa41136714483b780842526c383cfc4c3',1,'biblioteca::main::GestioneBiblioteca']]],
+  ['modificautente_2',['modificaUtente',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#a3fb3359753cdf51d6611265930c716ea',1,'biblioteca::main::GestioneBiblioteca']]]
 ];

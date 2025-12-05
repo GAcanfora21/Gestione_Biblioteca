@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package biblioteca.main;
 
 import java.util.List;
@@ -68,7 +63,6 @@ public class GestioneFile {
      * @pre nomeFile != null
      * @post le liste vengono riempite con i dati passati da parametro in ingresso nomeFile
      * 
-     * @return Oggetto GestioneFile contente i dati passati da parametro 
      * @see IF-16
      * @see FC-7
      */

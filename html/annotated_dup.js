@@ -3,8 +3,8 @@ var annotated_dup =
     [ "biblioteca", null, [
       [ "main", null, [
         [ "GestioneBiblioteca", "classbiblioteca_1_1main_1_1_gestione_biblioteca.html", "classbiblioteca_1_1main_1_1_gestione_biblioteca" ],
-        [ "GestioneFile", "classbiblioteca_1_1main_1_1_gestione_file.html", null ],
-        [ "Libro", "classbiblioteca_1_1main_1_1_libro.html", null ],
+        [ "GestioneFile", "classbiblioteca_1_1main_1_1_gestione_file.html", "classbiblioteca_1_1main_1_1_gestione_file" ],
+        [ "Libro", "classbiblioteca_1_1main_1_1_libro.html", "classbiblioteca_1_1main_1_1_libro" ],
         [ "MainApplication", "classbiblioteca_1_1main_1_1_main_application.html", null ],
         [ "Prestito", "classbiblioteca_1_1main_1_1_prestito.html", "classbiblioteca_1_1main_1_1_prestito" ],
         [ "Utente", "classbiblioteca_1_1main_1_1_utente.html", "classbiblioteca_1_1main_1_1_utente" ],
