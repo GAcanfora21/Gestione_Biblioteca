@@ -1,5 +1,7 @@
 package biblioteca.main;
 
+import javafx.collections.ObservableList;
+
 /**
  * @file ValidaDatiPrestito.java
  * @brief Verifica la validità di un prestito.
@@ -34,13 +36,13 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * 
      * Il metodo permette di verificare che l'utente non abbia raggiunto il massimo numero di prestiti in contemporanea. 
      * 
-     * @param[in] utente L'utente di cui esaminare il numero di prestiti.
+     * @param[in] prestitiUtente La lista dei prestiti dell'utente.
      * 
      * @return 'true' se l'utente presenta meno di tre prestiti attivi, 'false' altrimenti.
      * 
      * @see IF-11
      */
-    public boolean verificaLimitePrestito(Utente utente){
+    public boolean verificaLimitePrestito(ObservableList prestitiUtente){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -49,13 +51,13 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * 
      * Il metodo permette di verificare se le copie del libro da prestare non sono esaurite. 
      * 
-     * @param[in] libro Il libro di cui controllare il numero di copie.
+     * @param[in] numCopie Il numero di copie del libro.
      * 
      * @return 'true' se il libro dispone di almeno una copia, 'false' se il numero di copie è pari a zero.
      * 
      * @see IF-11
      */
-    public boolean verificaDisponibilitaCopie(Libro libro){
+    public boolean verificaDisponibilitaCopie(int numCopie){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
