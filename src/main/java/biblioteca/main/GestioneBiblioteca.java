@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package biblioteca.main;
 
 import javafx.collections.ObservableList;
@@ -57,7 +52,7 @@ public class GestioneBiblioteca {
     
     
     /**
-     * @brief restituisce una lista degli utenti
+     * @brief Restituisce una lista degli utenti
      * 
      * @return ObservableList degli utenti
      */
@@ -67,7 +62,7 @@ public class GestioneBiblioteca {
     
     
     /**
-     * @brief restituisce una lista dei prestiti
+     * @brief Restituisce una lista dei prestiti
      * 
      * @return ObservableList dei prestiti
      */
@@ -92,24 +87,6 @@ public class GestioneBiblioteca {
     }
     
     
-    /**
-     * @brief Modifica un libro dell'elenco.
-     *  
-     * @param[in] vecchioLibro Libro da modificare
-     * @param[inout] nuovoLibro Libro con dati aggiornati
-     * 
-     * @pre nuovoLibro != null
-     * @pre vecchioLibro != null
-     * @post vecchioLibro verrà sostituito con i dati aggiornati di nuovoLibro.
-     * 
-     * @return 'true' modificato con successo, 'false' altrimenti.
-     * 
-     * @see IF-2
-     * @see VerificaDatiLibro.java
-     */
-    public boolean modificaLibro(Libro vecchioLibro, Libro nuovoLibro){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
     
     /**
      * @brief Elimina un libro dell'elenco.
@@ -142,25 +119,6 @@ public class GestioneBiblioteca {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
-    /**
-     * @brief Modifica un utente dell'elenco.
-     *  
-     * @param[in] vecchioUtente Utente da modificare
-     * @param[inout] nuovoUtente Utente con dati aggiornati
-     * 
-     * @pre nuovoUtente != null
-     * @pre vecchioUtente != null
-     * @post vecchioUtente verrà sostituito con i dati aggiornati di nuovoUtente.
-     * 
-     * @return 'true' se l'utente è stato modificato con successo, 'false' altrimenti.
-     * 
-     * @see IF-7
-     * @see FC4
-     * @see FC5
-     */
-    public boolean modificaUtente(Utente vecchioUtente, Utente nuovoUtente){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
     /**
      * @brief Elimina un utente dell'elenco.
@@ -182,17 +140,15 @@ public class GestioneBiblioteca {
      * @pre prestito != null
      * @pre prestito.getLibro().getNumCopie() > 0 
      * @pre prestito.getUtente().getPrestitiAttivi().size() < 3
-     * @post se 'return == true' il prestito viene registrato nell'elenco
-     * @post se 'return == true' il libro.numCopie viene decrementato di 1
-     * @post se 'return == true' il prestito verrà aggiunto a utenti.prestitiAttivi
-     * 
-     * @return 'true' prestito aggiunto con successo, 'false' altrimenti
+     * @post prestito viene registrato nell'elenco
+     * @post libro.numCopie viene decrementato di 1
+     * @post prestito verrà aggiunto a utenti.prestitiAttivi
      * 
      * @see IF-11
      * @see FC-1
      * @see FC-2
      */
-    public boolean registraPrestito(Prestito prestito){
+    public void registraPrestito(Prestito prestito){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -202,14 +158,14 @@ public class GestioneBiblioteca {
      * @param[inout] prestito Prestito da registrare come restituito
      * @pre prestito != null
      * @pre prestito.getAttivo() == true
-     * @post se 'return == true' prestito.getAttivo() == false
-     * @post se 'return == true' libro.numCopie viene incrementato di 1
-     * @post se 'return == true' il prestito viene tolto da utenti.prestitiAttivi
+     * @post prestito.getAttivo() == false
+     * @post libro.numCopie viene incrementato di 1
+     * @post prestito viene tolto da utenti.prestitiAttivi
      * 
      * @see IF-13
      * @see registraPrestito()
      */
-    public boolean registraRestituzione(Prestito prestito){
+    public void registraRestituzione(Prestito prestito){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -261,11 +217,10 @@ public class GestioneBiblioteca {
      * @brief Carica l'archivio da file CSV.
      * 
      * @param[in] nomeFile Percorso del file.
-     * @return 'true' se caricato con successo, false altrimenti.
      * 
      * @see IF-16
      */
-    public boolean caricaArchivio(String nomeFile) {
+    public void caricaArchivio(String nomeFile) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
