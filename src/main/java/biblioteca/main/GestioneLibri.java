@@ -23,7 +23,7 @@ import javafx.collections.ObservableList;
  * @date December 06, 2025
  * @version 1.0
  */
-public class GestioneLibri implements Gestore<Libri>{
+public class GestioneLibri implements Gestore<Libro>{
     
     private ObservableList<Libro> libri;
 
