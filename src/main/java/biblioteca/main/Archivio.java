@@ -4,11 +4,11 @@ import java.util.List;
 
 
 /**
- * @file GestioneFile.java
- * @brief Questa classe gestisce il salvataggio e il caricamento dei dati su file CSV
+ * @file Archivio.java
+ * @brief Questa classe gestisce il salvataggio e il caricamento dei dati su file CSV.
  * 
  * Questa classe gestisce il caricamento e il salvataggio degli elenchi dei libri, utenti e prestiti
- * su file in formato CSV
+ * su file in formato CSV.
  * 
  * @see DF-4
  * @see BF-4
@@ -17,23 +17,23 @@ import java.util.List;
  * @date December 04, 2025
  * @version 1.0
  */
-public class GestioneFile {
+public class Archivio {
     
     
     /**
-     * @brief Costruttore di GestioneFile.
+     * @brief Costruttore di Archivio.
      * 
      * @post libri != null && libri.isEmpty()
      * @post utenti != null && utenti.isEmpty()
      * @post prestiti != null && prestiti.isEmpty()
      */
-    public GestioneFile(){
+    public Archivio(){
         
     }
     
     
     /**
-     * @brief questo metodo salva i dati della Biblioteca su file CSV
+     * @brief Il metodo salva i dati della Biblioteca su file CSV.
      * 
      * @param[in] nomeFile Percorso del file CSV.
      * @param[in] libri Lista dei libri da salvare.
@@ -52,7 +52,7 @@ public class GestioneFile {
     }
     
     /**
-     * @brief questo metodo carica i dati della biblioteca da file CSV.
+     * @brief Il metodo carica i dati della biblioteca da file CSV.
      * 
      * @param[in] nomeFile Percorso del file CSV.
      * @param[out] libri Lista in cui caricare i libri.
@@ -61,7 +61,7 @@ public class GestioneFile {
      * 
      * @pre nomeFile ha come estensione ".csv"
      * @pre nomeFile != null
-     * @post le liste vengono riempite con i dati passati da parametro in ingresso nomeFile
+     * @post Le liste vengono riempite con i dati passati da parametro in ingresso nomeFile.
      * 
      * @see IF-16
      * @see FC-7
