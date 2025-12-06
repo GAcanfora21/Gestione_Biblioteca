@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
 
 /**
  * @file Gestore.java
- * @brief questa interfaccia definisce
+ * @brief L'interfaccia contiene metodi di manipolazione e ricerca dati.
  * 
  * @author Giuseppe
  * @date December 06, 2025
@@ -18,20 +18,20 @@ import javafx.collections.ObservableList;
 public interface Gestore<T> {
     
     /**
-     * @brief metodo che permette di aggiungere un elemento
-     * @param[in] elem elemento da aggiungere 
+     * @brief Aggiunge un elemento a una collezione.
+     * @param[in] elem Elemento da aggiungere 
      */
     public void aggiungi(T elem);
     
     /**
-     * @brief metodo che permette di rimuovere un elemento
-     * @param[in] elem elemento da rimuovere 
+     * @brief Rimuove un elemento da una collezione.
+     * @param[in] elem Elemento da rimuovere 
      */
     public void elimina(T elem);
     
     /**
-     * @brief metodo che permette di cercare un elemento
-     * @param[in] elem elemento da cercare
+     * @brief Cerca un elemento in una collezione.
+     * @param[in] elem Elemento da cercare
      * @return T l'oggetto trovato
      */
     public ObservableList<T> cerca(String elem);

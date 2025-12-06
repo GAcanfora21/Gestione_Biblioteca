@@ -71,10 +71,11 @@ public class Prestito {
      * @brief Imposta lo stato del prestito.
      * 
      * Il metodo consente di impostare lo stato di un prestito come attivo/non attivo.
+     * @param[in] stato Stato del prestito
      * 
      * @see getAttivo()
      */
-    public void setAttivo(){
+    public void setAttivo(boolean stato){
     
     }
     

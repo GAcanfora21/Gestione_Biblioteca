@@ -5,6 +5,7 @@
  */
 package biblioteca.main;
 
+import java.time.LocalDate;
 import javafx.collections.ObservableList;
 
 /**
@@ -39,19 +40,20 @@ public class GestionePrestiti {
     /**
      * @brief Registra un nuovo prestito.
      * 
-     * @param[in] prestito Prestito da registrare
-     * @pre prestito != null
-     * @pre prestito.getLibro().getNumCopie() > 0 
-     * @pre prestito.getUtente().getPrestitiAttivi().size() < 3
+     * @param[in] utente Utente richiedente prestito.
+     * @param[in] libro Libro da prestare.
+     * @param[in] dataRestituzione Data entro cui restituire il libro.
+     * @pre libro.getNumCopie() > 0 
+     * @pre utente.getPrestitiAttivi() < 3
      * @post Il prestito viene registrato nell'elenco.
      * @post libro.numCopie viene decrementato di 1
-     * @post Il prestito verrà aggiunto a utenti.prestitiAttivi
+     * @post utente.prestitiAttivi viene incrementato di 1
      * 
      * @see IF-11
      * @see FC-1
      * @see FC-2
      */
-    public void registraPrestito(Prestito prestito){
+    public void registraPrestito(Utente utente, Libro libro, LocalDate dataRestituzione){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -63,7 +65,7 @@ public class GestionePrestiti {
      * @pre prestito.getAttivo() == true
      * @post prestito.getAttivo() == false
      * @post libro.numCopie viene incrementato di 1
-     * @post prestito viene tolto da utenti.prestitiAttivi
+     * @post utente.prestitiAttivi viene decrementato di 1
      * 
      * @see IF-13
      * @see registraPrestito()

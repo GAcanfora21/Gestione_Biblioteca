@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @file Utente.java
- * @brief Definisce attributi e metodi della classe Utente
+ * @brief Definisce attributi e metodi della classe Utente.
  * 
  * @invariant nome != null
  * @invariant cognome != null
@@ -24,7 +24,7 @@ public class Utente {
     private String cognome;
     private String matricola;
     private String email;
-    private List<Prestito> prestitiAttivi;
+    private int prestitiAttivi;
     
     
     public String getNome(){
@@ -43,7 +43,7 @@ public class Utente {
         return this.email;
     }
     
-    public List<Prestito> getPrestitiAttivi(){
+    public int getPrestitiAttivi(){
         return this.prestitiAttivi;
     }
 
@@ -63,44 +63,40 @@ public class Utente {
         this.email = email;
     }
 
-    public void setPrestitiAttivi(List<Prestito> prestitiAttivi) {
+    public void setPrestitiAttivi(int prestitiAttivi) {
         this.prestitiAttivi = prestitiAttivi;
     }
     
     
     /**
-     * @brief Aggiungi il prestito.
+     * @brief Aggiunge un prestito.
      * 
-     * Tale metodo consente di aggiungere un prestito all'elenco di libri prestati 
-     * all'utente.
+     * Il metodo permette di incrementare il numero di prestiti attivi dell'utente.
      * 
-     * @param[in] prestito Il prestito da aggiungere.
      * 
-     * @pre L'utente non ha raggiunto il limite di prestiti.
-     * @post Il prestito viene aggiunto all'elenco prestiti dell'utente.
+     * @pre L'utente non ha raggiunto il limite di prestiti attivi.
+     * @post Il numero di prestiti attivi dell'utente è aumentato di 1.
      * 
      * @see DF-1
-     * @see verificaLimitePrestito(Utente utente).
+     * @see verificaLimitePrestito().
     */
-    public void aggiungiPrestito(Prestito prestito){
+    public void incrementaPrestiti(){
         
     }
     
     /**
-     * @brief Rimuovi il prestito.
+     * @brief Rimuove un prestito.
      * 
-     * Tale metodo consente di rimuovere un prestito dall'elenco di libri prestati 
-     * all'utente.
+     * Il metodo permette di decrementare il numero di prestiti attivi dell'utente.
      * 
-     * @param[in] prestito Il prestito da rimuovere.
      * 
-     * @pre Il prestito è presente nell'elenco prestiti dell'utente.
-     * @post Il prestito viene rimosso dall'elenco prestiti dell'utente.
+     * @pre 'prestitiAttivi > 0'
+     * @post Il numero di prestiti attivi dell'utente è diminuito di 1.
      * 
      *
      * @see IF-8
     */
-    public void rimuoviPrestito(Prestito prestito){
+    public void decrementaPrestiti(){
         
     }
     

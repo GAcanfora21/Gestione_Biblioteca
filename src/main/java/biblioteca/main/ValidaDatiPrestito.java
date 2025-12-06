@@ -23,8 +23,8 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * @return 'true' se il prestito soddisfa i requisiti definiti in IF-11, 'false' altrimenti.
      * 
      * @see IF-11
-     * @see verificaLimitePrestito(Utente utente)
-     * @see verificaDisponibilitàCopie(Libro libro)
+     * @see verificaLimitePrestito()
+     * @see verificaDisponibilitàCopie()
      */
     public boolean isValido(Prestito prestito){
         throw new UnsupportedOperationException("Not supported yet.");
@@ -36,13 +36,13 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * 
      * Il metodo permette di verificare che l'utente non abbia raggiunto il massimo numero di prestiti in contemporanea. 
      * 
-     * @param[in] prestitiUtente La lista dei prestiti dell'utente.
+     * @param[in] prestitiUtente Il numero dei prestiti dell'utente.
      * 
      * @return 'true' se l'utente presenta meno di tre prestiti attivi, 'false' altrimenti.
      * 
      * @see IF-11
      */
-    public boolean verificaLimitePrestito(ObservableList prestitiUtente){
+    public boolean verificaLimitePrestito(int prestitiUtente){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
