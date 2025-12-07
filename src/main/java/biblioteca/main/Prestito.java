@@ -20,12 +20,18 @@ public class Prestito {
     
     /**
      * @brief Costruttore di Prestito.
+     * @brief Costruttore completo di Prestito
      * 
+     * @param[in] utente L'utente che prende in prestito
+     * @param[in] libro Il libro prestato
+     * @param[in] dataRestituzione Data prevista per la restituzione
      * 
      * @pre libro != null
      * @pre utente != null
+     * @pre dataRestituzione != null
+     * @post attivo == true
      */
-    public Prestito(){
+    public Prestito(Utente utente, Libro libro, LocalDate dataRestituzione){
     
     }
     

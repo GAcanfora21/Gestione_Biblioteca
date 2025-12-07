@@ -10,7 +10,7 @@ import java.util.List;
  * @invariant cognome != null
  * @invariant matricola != null
  * @invariant email != null
- * @invariant prestitiAttivi != null
+ * @invariant prestitiAttivi >= 0
  * 
  * @see Prestito
  * @see DF-1

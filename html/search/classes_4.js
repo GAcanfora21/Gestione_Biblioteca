@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prestito_0',['Prestito',['../classbiblioteca_1_1main_1_1_prestito.html',1,'biblioteca::main']]]
+  ['mainapplication_0',['MainApplication',['../classbiblioteca_1_1main_1_1_main_application.html',1,'biblioteca::main']]]
 ];

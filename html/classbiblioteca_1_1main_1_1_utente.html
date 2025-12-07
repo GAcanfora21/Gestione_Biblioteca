@@ -94,69 +94,57 @@ $(function(){initNavTree('classbiblioteca_1_1main_1_1_utente.html','','classbibl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2af685ca81a909dab680550734a08eda" id="r_a2af685ca81a909dab680550734a08eda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2af685ca81a909dab680550734a08eda">aggiungiPrestito</a> (<a class="el" href="classbiblioteca_1_1main_1_1_prestito.html">Prestito</a> prestito)</td></tr>
-<tr class="memdesc:a2af685ca81a909dab680550734a08eda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiungi il prestito.  <br /></td></tr>
-<tr class="memitem:afb75c194155bb0a18e02c10c40840f72" id="r_afb75c194155bb0a18e02c10c40840f72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb75c194155bb0a18e02c10c40840f72">rimuoviPrestito</a> (<a class="el" href="classbiblioteca_1_1main_1_1_prestito.html">Prestito</a> prestito)</td></tr>
-<tr class="memdesc:afb75c194155bb0a18e02c10c40840f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuovi il prestito.  <br /></td></tr>
+<tr class="memitem:aaa7ab4e72af180e1b176176960536ce0" id="r_aaa7ab4e72af180e1b176176960536ce0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa7ab4e72af180e1b176176960536ce0">incrementaPrestiti</a> ()</td></tr>
+<tr class="memdesc:aaa7ab4e72af180e1b176176960536ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggiunge un prestito.  <br /></td></tr>
+<tr class="memitem:ad5917af79f9b6c02456e0fade833c07a" id="r_ad5917af79f9b6c02456e0fade833c07a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5917af79f9b6c02456e0fade833c07a">decrementaPrestiti</a> ()</td></tr>
+<tr class="memdesc:ad5917af79f9b6c02456e0fade833c07a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rimuove un prestito.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a2af685ca81a909dab680550734a08eda" name="a2af685ca81a909dab680550734a08eda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2af685ca81a909dab680550734a08eda">&#9670;&#160;</a></span>aggiungiPrestito()</h2>
+<a id="ad5917af79f9b6c02456e0fade833c07a" name="ad5917af79f9b6c02456e0fade833c07a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5917af79f9b6c02456e0fade833c07a">&#9670;&#160;</a></span>decrementaPrestiti()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void biblioteca.main.Utente.aggiungiPrestito </td>
+          <td class="memname">void biblioteca.main.Utente.decrementaPrestiti </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classbiblioteca_1_1main_1_1_prestito.html">Prestito</a></td>          <td class="paramname"><span class="paramname"><em>prestito</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Aggiungi il prestito. </p>
-<p>Tale metodo consente di aggiungere un prestito all'elenco di libri prestati all'utente.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">prestito</td><td>Il prestito da aggiungere.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section pre"><dt>Precondition</dt><dd>L'utente non ha raggiunto il limite di prestiti. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Il prestito viene aggiunto all'elenco prestiti dell'utente.</dd></dl>
+<p>Rimuove un prestito. </p>
+<p>Il metodo permette di decrementare il numero di prestiti attivi dell'utente.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>'prestitiAttivi &gt; 0' </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Il numero di prestiti attivi dell'utente è diminuito di 1.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd>IF-8 </dd></dl>
+
+</div>
+</div>
+<a id="aaa7ab4e72af180e1b176176960536ce0" name="aaa7ab4e72af180e1b176176960536ce0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa7ab4e72af180e1b176176960536ce0">&#9670;&#160;</a></span>incrementaPrestiti()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void biblioteca.main.Utente.incrementaPrestiti </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Aggiunge un prestito. </p>
+<p>Il metodo permette di incrementare il numero di prestiti attivi dell'utente.</p>
+<dl class="section pre"><dt>Precondition</dt><dd>L'utente non ha raggiunto il limite di prestiti attivi. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Il numero di prestiti attivi dell'utente è aumentato di 1.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd>DF-1 </dd>
 <dd>
-verificaLimitePrestito(Utente utente). </dd></dl>
-
-</div>
-</div>
-<a id="afb75c194155bb0a18e02c10c40840f72" name="afb75c194155bb0a18e02c10c40840f72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb75c194155bb0a18e02c10c40840f72">&#9670;&#160;</a></span>rimuoviPrestito()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void biblioteca.main.Utente.rimuoviPrestito </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classbiblioteca_1_1main_1_1_prestito.html">Prestito</a></td>          <td class="paramname"><span class="paramname"><em>prestito</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Rimuovi il prestito. </p>
-<p>Tale metodo consente di rimuovere un prestito dall'elenco di libri prestati all'utente.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">prestito</td><td>Il prestito da rimuovere.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section pre"><dt>Precondition</dt><dd>Il prestito è presente nell'elenco prestiti dell'utente. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Il prestito viene rimosso dall'elenco prestiti dell'utente.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd>IF-8 </dd></dl>
+verificaLimitePrestito(). </dd></dl>
 
 </div>
 </div>

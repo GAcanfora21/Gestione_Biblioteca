@@ -6,7 +6,7 @@ package biblioteca.main;
  * 
  * @invariant titolo != null
  * @invariant autori != null
- * @invariant annoDiPubblicazione > 0
+ * @invariant annoDiPubblicazione != null
  * @invariant codiceIdentificativo != null && codiceIdentificativo.length() == 10
  * @invariant numCopie >= 0
  * 
@@ -22,7 +22,7 @@ public class Libro {
     
     private String titolo;
     private String autori;
-    private int annoDiPubblicazione;
+    private String annoDiPubblicazione;
     private String codiceIdentificativo;
     private int numCopie;
     
@@ -35,7 +35,7 @@ public class Libro {
      * @param[in] codiceIdentificativo Codice univoco (10 cifre).
      * @param[in] numCopie Numero di copie disponibili.
      */
-    public Libro(String titolo, String autori, int annoDiPubblicazione, String codiceIdentificativo, int numCopie){
+    public Libro(String titolo, String autori, String annoDiPubblicazione, String codiceIdentificativo, int numCopie){
         //
     }
 
@@ -47,7 +47,7 @@ public class Libro {
         return autori;
     }
 
-    public int getAnnoDiPubblicazione() {
+    public String getAnnoDiPubblicazione() {
         return annoDiPubblicazione;
     }
 
@@ -67,7 +67,7 @@ public class Libro {
         this.autori = autori;
     }
 
-    public void setAnnoDiPubblicazione(int annoDiPubblicazione) {
+    public void setAnnoDiPubblicazione(String annoDiPubblicazione) {
         this.annoDiPubblicazione = annoDiPubblicazione;
     }
 

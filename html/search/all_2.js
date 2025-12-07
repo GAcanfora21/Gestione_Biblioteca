@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['caricaarchivio_0',['caricaArchivio',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#aa60a02236eb005e9bf8721ed4a5d8368',1,'biblioteca::main::GestioneBiblioteca']]],
-  ['caricafilecsv_1',['caricaFileCSV',['../classbiblioteca_1_1main_1_1_gestione_file.html#a10b7122903c3da610d3d7465e6029a72',1,'biblioteca::main::GestioneFile']]],
-  ['cercalibro_2',['cercaLibro',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#a0b72d6540a4ef363d61baa4bdc6c69bd',1,'biblioteca::main::GestioneBiblioteca']]],
-  ['cercautente_3',['cercaUtente',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#a17dc77926a7780c446ec96b7ca841285',1,'biblioteca::main::GestioneBiblioteca']]]
+  ['caricafilecsv_0',['caricaFileCSV',['../classbiblioteca_1_1main_1_1_archivio.html#ac156d49d0ee3761e34b245c667c22383',1,'biblioteca::main::Archivio']]],
+  ['cerca_1',['cerca',['../classbiblioteca_1_1main_1_1_gestione_libri.html#a4e98079ad4ffafdb75e291b92542fcb1',1,'biblioteca.main.GestioneLibri.cerca()'],['../classbiblioteca_1_1main_1_1_gestione_utenti.html#a4c344eb1ef50a8417ca3ae20a9a4bc8d',1,'biblioteca.main.GestioneUtenti.cerca()'],['../interfacebiblioteca_1_1main_1_1_gestore.html#a68a3ce6e8abfbe14942351e21f1887aa',1,'biblioteca.main.Gestore.cerca()']]]
 ];

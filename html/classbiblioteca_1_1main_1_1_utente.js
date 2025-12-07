@@ -1,5 +1,5 @@
 var classbiblioteca_1_1main_1_1_utente =
 [
-    [ "aggiungiPrestito", "classbiblioteca_1_1main_1_1_utente.html#a2af685ca81a909dab680550734a08eda", null ],
-    [ "rimuoviPrestito", "classbiblioteca_1_1main_1_1_utente.html#afb75c194155bb0a18e02c10c40840f72", null ]
+    [ "decrementaPrestiti", "classbiblioteca_1_1main_1_1_utente.html#ad5917af79f9b6c02456e0fade833c07a", null ],
+    [ "incrementaPrestiti", "classbiblioteca_1_1main_1_1_utente.html#aaa7ab4e72af180e1b176176960536ce0", null ]
 ];

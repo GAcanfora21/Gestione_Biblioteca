@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mainapplication_0',['MainApplication',['../classbiblioteca_1_1main_1_1_main_application.html',1,'biblioteca::main']]]
+  ['libro_0',['Libro',['../classbiblioteca_1_1main_1_1_libro.html',1,'biblioteca::main']]]
 ];

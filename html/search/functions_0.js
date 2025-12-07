@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['aggiungicopie_0',['aggiungiCopie',['../classbiblioteca_1_1main_1_1_libro.html#a76b5fb8c8a00b6ac60ca56adefbae828',1,'biblioteca::main::Libro']]],
-  ['aggiungilibro_1',['aggiungiLibro',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#ae748ef883652e09620bd012cecd62ba7',1,'biblioteca::main::GestioneBiblioteca']]],
-  ['aggiungiprestito_2',['aggiungiPrestito',['../classbiblioteca_1_1main_1_1_utente.html#a2af685ca81a909dab680550734a08eda',1,'biblioteca::main::Utente']]],
-  ['aggiungiutente_3',['aggiungiUtente',['../classbiblioteca_1_1main_1_1_gestione_biblioteca.html#a066d380b339a1891e68f2f676ad14156',1,'biblioteca::main::GestioneBiblioteca']]]
+  ['aggiungi_0',['aggiungi',['../classbiblioteca_1_1main_1_1_gestione_libri.html#ae0f51e7ec9abd3e0c2bb50c28a4da590',1,'biblioteca.main.GestioneLibri.aggiungi()'],['../classbiblioteca_1_1main_1_1_gestione_utenti.html#adcc8b865c4ee3f3455882ade26e96f25',1,'biblioteca.main.GestioneUtenti.aggiungi()'],['../interfacebiblioteca_1_1main_1_1_gestore.html#a056be51a5bd80f57d5abd29b4fe8837e',1,'biblioteca.main.Gestore.aggiungi()']]],
+  ['aggiungicopie_1',['aggiungiCopie',['../classbiblioteca_1_1main_1_1_libro.html#a76b5fb8c8a00b6ac60ca56adefbae828',1,'biblioteca::main::Libro']]],
+  ['archivio_2',['Archivio',['../classbiblioteca_1_1main_1_1_archivio.html#a98ddfe8f39810279573a81ccedeb5935',1,'biblioteca::main::Archivio']]]
 ];

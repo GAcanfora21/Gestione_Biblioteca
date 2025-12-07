@@ -40,20 +40,18 @@ public class GestionePrestiti {
     /**
      * @brief Registra un nuovo prestito.
      * 
-     * @param[in] utente Utente richiedente prestito.
-     * @param[in] libro Libro da prestare.
-     * @param[in] dataRestituzione Data entro cui restituire il libro.
-     * @pre libro.getNumCopie() > 0 
-     * @pre utente.getPrestitiAttivi() < 3
+     * @param[in] prestito Prestito da registrare
+     * @pre prestito.getLibro().getNumCopie() > 0 
+     * @pre prestito.getUtente().getPrestitiAttivi() < 3
      * @post Il prestito viene registrato nell'elenco.
-     * @post libro.numCopie viene decrementato di 1
-     * @post utente.prestitiAttivi viene incrementato di 1
+     * @post libro.numCopie viene decrementato di 1 (GestioneLibri)
+     * @post utente.prestitiAttivi viene incrementato di 1 (GestionePrestiti)
      * 
      * @see IF-11
      * @see FC-1
      * @see FC-2
      */
-    public void registraPrestito(Utente utente, Libro libro, LocalDate dataRestituzione){
+    public void registraPrestito(Prestito prestito){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
