@@ -15,7 +15,7 @@ public class MainApplication extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        //Loader recupera la struttura grafica dal nostro file FXML
+        
         Parent root = FXMLLoader.load(getClass().getResource("/biblioteca/view/BibliotecaView.fxml"));
 
         Scene scene = new Scene(root);

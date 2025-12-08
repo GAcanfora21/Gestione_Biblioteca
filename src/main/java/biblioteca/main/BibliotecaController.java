@@ -49,19 +49,9 @@ public class BibliotecaController {
     @FXML
     private Button aggiungiLibro;
     @FXML
-    private TextField libriTFD;
-    @FXML
     private Button cercaLibro;
     @FXML
     private Button eliminaLibro;
-    @FXML
-    private TextField titoloTFD;
-    @FXML
-    private TextField autoriTFD;
-    @FXML
-    private TextField annoTFD;
-    @FXML
-    private TextField codiceTFD;
     @FXML
     private Tab tabUtenti;
     @FXML
@@ -77,19 +67,9 @@ public class BibliotecaController {
     @FXML
     private Button aggiungiUtente;
     @FXML
-    private TextField libriTFD1;
-    @FXML
     private Button cercaUtente;
     @FXML
     private Button eliminaUtente;
-    @FXML
-    private TextField nomeTFD;
-    @FXML
-    private TextField cognomeTFD;
-    @FXML
-    private TextField emailTFD;
-    @FXML
-    private TextField matricolaTFD;
     @FXML
     private Tab tabPrestiti;
     @FXML
@@ -105,13 +85,33 @@ public class BibliotecaController {
     @FXML
     private Button aggiungiPrestito;
     @FXML
-    private Button eliminaPrestito;
+    private TextField cercaLibriField;
     @FXML
-    private TextField dataResoTFD;
+    private TextField titoloField;
     @FXML
-    private TextField utentePTFD;
+    private TextField autoriField;
     @FXML
-    private TextField libroPTFD;
+    private TextField annoField;
+    @FXML
+    private TextField copieField;
+    @FXML
+    private TextField codiceField1;
+    @FXML
+    private TextField cercaUtentiField;
+    @FXML
+    private TextField nomeField;
+    @FXML
+    private TextField cognomeField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField matricolaField;
+    @FXML
+    private TextField dataResoField;
+    @FXML
+    private TextField utentePrestitoField;
+    @FXML
+    private TextField libroPrestitoField;
 
     @FXML
     private void goToLibri(ActionEvent event) {
@@ -123,6 +123,42 @@ public class BibliotecaController {
 
     @FXML
     private void goToPrestiti(ActionEvent event) {
+    }
+
+    @FXML
+    private void updateTitolo(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateAutori(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateAnno(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateCodice(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateCopie(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateNome(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateCognome(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateEmail(TableColumn.CellEditEvent<?, ?> event) {
+    }
+
+    @FXML
+    private void updateMatricola(TableColumn.CellEditEvent<?, ?> event) {
     }
     
 }

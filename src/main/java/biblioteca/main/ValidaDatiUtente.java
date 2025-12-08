@@ -23,8 +23,8 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      * @return 'true' se l'utente soddisfa i requisiti definiti in IF-6, 'false' altrimenti.
      * 
      * @see IF-6
-     * @see verificaEmail(Utente utente)
-     * @see verificaUnicitàMatricola(Utente utente)
+     * @see verificaEmail()
+     * @see verificaUnicitaMatricola()
      */
     @Override
     public boolean isValido(Utente utente){
@@ -38,13 +38,13 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      * 
      * Il metodo permette di verificare che l'email rispetti i criteri descritti in FC-5. 
      * 
-     * @param[in] utente L'utente di cui esaminare l'email.
+     * @param[in] email L'email di cui verificare il formato.
      * 
      * @return 'true' se l'email rispetta il formato corretto, 'false' altrimenti.
      * 
      * @see FC-5
      */
-    public boolean verificaEmail(Utente utente){
+    public boolean verificaEmail(String email){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -54,13 +54,13 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      * 
      * Il metodo permette di verificare che la matricola rispetti i criteri descritti in FC-4. 
      * 
-     * @param[in] utente L'utente di cui esaminare la matricola.
+     * @param[in] matricola La matricola di cui verificare l'unicità.
      * 
      * @return 'true' se la matricola è unica, 'false' altrimenti.
      * 
      * @see FC-4
      */
-    public boolean verificaUnicitaMatricola(Utente utente){
+    public boolean verificaUnicitaMatricola(String matricola){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

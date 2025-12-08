@@ -17,10 +17,6 @@ package biblioteca.main;
 public class ValidaDatiLibro implements ValidaDati<Libro> {
     
     
-    
-    
-    
-    
     /**
      * @brief Verifica se dati del libro inserito siano validi
      * 
@@ -36,9 +32,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      */
     public boolean isValido(Libro libro){
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
-    
+    } 
     
     
     /**
@@ -47,22 +41,24 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * 
      * @pre 'codice != null', il parametro d'ingresso deve essere non nullo.
      * 
-     * @param[in] codice codice da validare.
+     * @param[in] codice Codice da validare.
      * @return 'true' se il formato codice è corretto, 'false' altrimenti.
      */
-    private boolean verificaCodiceIdentificativo(String codice){
+    public boolean verificaCodiceIdentificativo(String codice){
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    
     /**
      * @brief Unicità codice identificativo nell'archivio (FC-3, IF-1).
      * 
      * 
      * @pre 'codice != null' il parametro d'ingresso deve essere non nullo.
      * 
-     * @param[in] codice codice da validare.
+     * @param[in] codice Codice da validare.
      * @return 'true' se il codice è univoco, 'false' altrimenti.
      */
-    private boolean verificaUnicitaCodice(String codice){
+    public boolean verificaUnicitaCodice(String codice){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
