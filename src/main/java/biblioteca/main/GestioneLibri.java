@@ -6,6 +6,7 @@
 package biblioteca.main;
 
 import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 
 /**
  * @file GestioneLibri.java
@@ -28,12 +29,13 @@ public class GestioneLibri implements Gestore<Libro>{
     private ObservableList<Libro> libri;
 
     public GestioneLibri() {
+        this.libri = FXCollections.observableArrayList();
     }
     
     
     
     public ObservableList<Libro> getLibri(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.libri;
     }
     
     /**
@@ -48,7 +50,9 @@ public class GestioneLibri implements Gestore<Libro>{
      * @see FC-3
      */
     public void aggiungi(Libro libro){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(libri == null) return;
+        
+            libri.add(libro);
     }
     
     
@@ -64,7 +68,9 @@ public class GestioneLibri implements Gestore<Libro>{
      * @see FC-3
      */
     public void elimina(Libro libro){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(libri != null) return;
+        
+            libri.remove(libro);
     }
     
     
