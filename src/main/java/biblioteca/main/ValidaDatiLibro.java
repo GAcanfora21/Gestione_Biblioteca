@@ -21,7 +21,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @brief Verifica se dati del libro inserito siano validi
      * 
      * Questo metodo verifica che i dati di un libro rispettino i vincoli:
-     * 1. Sia nel formato corretto (10 cifre) tramite verificaCodiceIdentificativo()
+     * 1. Sia nel formato corretto (10 cifre) tramite verificaFormatoCodice()
      * 2. Sia univoco nell'archivio tramite verificaUnicitaCodice()
      * 
      * @pre libro != null.
@@ -44,7 +44,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @param[in] codice Codice da validare.
      * @return 'true' se il formato codice è corretto, 'false' altrimenti.
      */
-    public boolean verificaCodiceIdentificativo(String codice){
+    private boolean verificaFormatoCodice(String codice){
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
@@ -58,7 +58,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @param[in] codice Codice da validare.
      * @return 'true' se il codice è univoco, 'false' altrimenti.
      */
-    public boolean verificaUnicitaCodice(String codice){
+    private boolean verificaUnicitaCodice(String codice){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
