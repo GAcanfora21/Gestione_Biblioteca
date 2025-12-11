@@ -32,8 +32,8 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      */
     public boolean isValido(Libro libro){
         throw new UnsupportedOperationException("Not supported yet.");
-    } 
-    
+        }
+        
     
     /**
      * @brief Verifica il formato del codice identificativo: 10 cifre (FC-3).
@@ -60,5 +60,5 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      */
     private boolean verificaUnicitaCodice(String codice){
         throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
-}

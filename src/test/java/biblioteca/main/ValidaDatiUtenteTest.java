@@ -42,7 +42,7 @@ public class ValidaDatiUtenteTest {
         Utente nuovoUtente1 = new Utente("Pippo", "Baudo", "1234AB", "Pippo@studenti.unisa.it", 0);
         assertFalse(validatoreUtente.isValido(nuovoUtente1));
         
-        //terzo caso di test, solo la condizione UnicitàMatricola è verificata
+        //terzo caso di test, solo la condizione UnicitaMatricola è verificata
         //risultato atteso: 'false'
         Utente nuovoUtente2 = new Utente("Pippo", "Baudo", "1111AB", "@studenti.unisa.it", 0);
         assertFalse(validatoreUtente.isValido(nuovoUtente2));
@@ -80,6 +80,6 @@ public class ValidaDatiUtenteTest {
         //Testo la Case Insensitivity
         //risultato atteso: 'true'
         assertTrue(validatoreUtente.verificaUnicitaMatricola("06127ab"));
-    }
-    
+    }
+    
 }

@@ -33,18 +33,22 @@ public class Prestito {
      */
     public Prestito(Utente utente, Libro libro, LocalDate dataRestituzione){
     
+        this.utente = utente;
+        this.libro = libro;
+        this.dataRestituzione = dataRestituzione;
+        this.attivo = true;
     }
     
     public Utente getUtente(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.utente;
     }
     
     public Libro getLibro(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.libro;
     }
     
     public LocalDate getDataRestituzione(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.dataRestituzione;
     }
     
     /**  
@@ -57,21 +61,9 @@ public class Prestito {
      * @return 'true' se il prestito è ancora registrato nell'elenco dei prestiti, 'false' altrimenti.
      */
     public boolean getAttivo(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.attivo;
     }
     
-    /**  
-     * @brief Verifica che il prestito sia in ritardo.
-     * 
-     * Il metodo consente di stabilire se il prestito risulti ancora attivo superata la data di restituzione prevista. 
-     * 
-     * @return 'true' se il prestito è ancora attivo superata la data di restituzione, 'false' altrimenti.
-     * 
-     * @see getAttivo()
-     */
-    public boolean isRitardo(){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
     
     /**  
      * @brief Imposta lo stato del prestito.
@@ -82,12 +74,26 @@ public class Prestito {
      * @see getAttivo()
      */
     public void setAttivo(boolean stato){
+        this.attivo = stato;
+    }
     
+    
+    /**  
+     * @brief Verifica che il prestito sia in ritardo.
+     * 
+     * Il metodo consente di stabilire se il prestito risulti ancora attivo superata la data di restituzione prevista. 
+     * 
+     * @return 'true' se il prestito è ancora attivo superata la data di restituzione, 'false' altrimenti.
+     * 
+     * @see getAttivo()
+     */
+    public boolean isRitardo(){      
+        return LocalDate.now().isAfter(this.dataRestituzione);
     }
     
     
     @Override
     public String toString(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Prestito: " + getUtente() + " | " + getLibro() + " | " + getDataRestituzione() + "\n";
     }
 }

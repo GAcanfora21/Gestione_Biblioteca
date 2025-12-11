@@ -100,6 +100,6 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
         for(Utente u : listaUtenti){
             if(u.getMatricola().equalsIgnoreCase(matricola)) return false;
         }
-        return true;
-    }
+        return true;
+    }
 }

@@ -24,10 +24,16 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * 
      * @see IF-11
      * @see verificaLimitePrestito()
-     * @see verificaDisponibilitàCopie()
+     * @see verificaDisponibilitaCopie()
      */
     public boolean isValido(Prestito prestito){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        if(prestito == null) return false;
+        
+        boolean limitePrestito = verificaLimitePrestito(prestito.getUtente().getPrestitiAttivi());
+        boolean limiteCopie = verificaDisponibilitaCopie(prestito.getLibro().getNumCopie());
+        
+        return limitePrestito && limiteCopie;
     }
     
     
@@ -43,7 +49,14 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * @see IF-11
      */
     public boolean verificaLimitePrestito(int prestitiUtente){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        if(prestitiUtente < 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+            
     }
     
     /**  
@@ -58,7 +71,13 @@ public class ValidaDatiPrestito implements ValidaDati<Prestito>{
      * @see IF-11
      */
     public boolean verificaDisponibilitaCopie(int numCopie){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        if(numCopie > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
 }
