@@ -12,7 +12,7 @@ import javafx.collections.FXCollections;
  * @file GestioneLibri.java
  * @brief La classe si occupa di aggiungere, eliminare e cercare libri. 
  * 
- * @invariant libro != null
+ * @invariant listaLibri != null
  * 
  * @see Libro.java
  * @see IF-1
@@ -26,16 +26,16 @@ import javafx.collections.FXCollections;
  */
 public class GestioneLibri implements Gestore<Libro>{
     
-    private ObservableList<Libro> libri;
+    private ObservableList<Libro> listaLibri;
 
     public GestioneLibri() {
-        this.libri = FXCollections.observableArrayList();
+        this.listaLibri = FXCollections.observableArrayList();
     }
     
     
     
     public ObservableList<Libro> getLibri(){
-        return this.libri;
+        return this.listaLibri;
     }
     
     /**
@@ -50,9 +50,8 @@ public class GestioneLibri implements Gestore<Libro>{
      * @see FC-3
      */
     public void aggiungi(Libro libro){
-        if(libri == null) return;
-        
-            libri.add(libro);
+        if(libro == null) throw new IllegalArgumentException("Libro passato non può avere valore null");
+        listaLibri.add(libro);
     }
     
     
@@ -68,9 +67,8 @@ public class GestioneLibri implements Gestore<Libro>{
      * @see FC-3
      */
     public void elimina(Libro libro){
-        if(libri != null) return;
-        
-            libri.remove(libro);
+        if(libro == null) throw new IllegalArgumentException("Non posso eliminare un libro con valore null");
+            listaLibri.remove(libro);
     }
     
     
@@ -87,6 +85,32 @@ public class GestioneLibri implements Gestore<Libro>{
      * @see ValidaDatiLibro.java
      */
     public ObservableList<Libro> cerca(String str){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        if(str == null || str.isEmpty()) return FXCollections.observableArrayList();
+        
+        //Creo una lista temporanea vuota dove andrò a inserire i vari risultati ottenuti
+        ObservableList<Libro> result = FXCollections.observableArrayList();
+        
+        //Un for each di 'listLibri' necessaria per scorrere tutti gli elementi della lista e verificarne le uguaglianze con la stringa passata
+        for(Libro l : listaLibri){
+            if((l.getAutori() != null && l.getAutori().equalsIgnoreCase(str)) ||
+               (l.getTitolo() != null && l.getTitolo().equalsIgnoreCase(str)) ||
+               (l.getCodiceIdentificativo() != null && l.getCodiceIdentificativo().equalsIgnoreCase(str))){
+            
+                result.add(l);
+            }
+        }
+        
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("GestioneLibri contiene ").append(listaLibri.size()).append(" libri:\n");
+        for(Libro l : listaLibri){
+            sb.append(l.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }

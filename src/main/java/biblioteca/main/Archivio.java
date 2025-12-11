@@ -20,17 +20,6 @@ import java.util.List;
 public class Archivio {
     
     
-    /**
-     * @brief Costruttore di Archivio.
-     * 
-     * @post libri != null && libri.isEmpty()
-     * @post utenti != null && utenti.isEmpty()
-     * @post prestiti != null && prestiti.isEmpty()
-     */
-    public Archivio(){
-        
-    }
-    
     
     /**
      * @brief Il metodo salva i dati della Biblioteca su file CSV.
@@ -48,7 +37,15 @@ public class Archivio {
      * @see FC-7
      */
     public static void salvaFileCSV(String nomeFile, List<Libro> libri, List<Utente> utenti, List<Prestito> prestiti){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(nomeFile == null || nomeFile.endsWith(".csv")){
+            throw new IllegalArgumentException("nome del file deve terminare con '.csv'");
+        }
+        
+        if(libri == null || utenti == null || prestiti == null){
+            throw new IllegalArgumentException("Le liste non posso essere null");
+        }
+        
+        //da completare
     }
     
     /**

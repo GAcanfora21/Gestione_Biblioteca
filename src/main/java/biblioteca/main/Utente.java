@@ -33,7 +33,6 @@ public class Utente {
         this.email = email;
         this.prestitiAttivi = prestitiAttivi;
     }
-    
     public String getNome(){
         return this.nome;
     }

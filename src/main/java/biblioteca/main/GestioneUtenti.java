@@ -5,6 +5,7 @@
  */
 package biblioteca.main;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -27,15 +28,16 @@ import javafx.collections.ObservableList;
  */
 public class GestioneUtenti implements Gestore<Utente>{
     
-    private ObservableList<Utente> utenti;
+    private ObservableList<Utente> listaUtenti;
 
     public GestioneUtenti() {
+        this.listaUtenti = FXCollections.observableArrayList();
     }
     
     
     
     public ObservableList<Utente> getUtenti(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return listaUtenti;
     }
     
     /**
@@ -51,7 +53,8 @@ public class GestioneUtenti implements Gestore<Utente>{
      * @see FC5
      */
     public void aggiungi(Utente utente){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(utente == null) throw new IllegalArgumentException("Utente passato non può avere valore null");
+        listaUtenti.add(utente);
     }
     
 
@@ -66,7 +69,8 @@ public class GestioneUtenti implements Gestore<Utente>{
      * @see IF-8
      */
     public void elimina(Utente utente){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(utente == null) throw new IllegalArgumentException("Non posso eliminare un utente con valore null");
+        listaUtenti.remove(utente);
     }
     
     
@@ -83,6 +87,30 @@ public class GestioneUtenti implements Gestore<Utente>{
      * @see ValidaDatiUtente.java
      */
     public ObservableList<Utente> cerca(String str){
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(str == null || str.isEmpty()) return FXCollections.observableArrayList();
+        
+        //Creo una lista temporanea vuota dove andrò a inserire i vari risultati ottenuti
+        ObservableList<Utente> result = FXCollections.observableArrayList();
+        
+        //Un for each di 'listLibri' necessaria per scorrere tutti gli elementi della lista e verificarne le uguaglianze con la stringa passata
+        for(Utente u : listaUtenti){
+            if((u.getCognome()!= null && u.getCognome().equalsIgnoreCase(str)) ||
+               (u.getMatricola() != null && u.getMatricola().equalsIgnoreCase(str))){
+            
+                result.add(u);
+            }
+        }
+        
+        return result;
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("GestioneLibri contiene ").append(listaUtenti.size()).append(" libri:\n");
+        for(Utente u : listaUtenti){
+            sb.append(u.toString()).append("\n");
+        }
+        return sb.toString();
     }
 }
