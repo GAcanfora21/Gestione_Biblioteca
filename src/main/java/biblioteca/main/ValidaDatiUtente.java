@@ -1,5 +1,7 @@
 package biblioteca.main;
 
+import javafx.collections.ObservableList;
+
 /**
  * @file ValidaDatiUtente.java
  * @brief Verifica la validità di un utente.
@@ -13,6 +15,17 @@ package biblioteca.main;
  */
 public class ValidaDatiUtente implements ValidaDati<Utente>{
     
+    
+    // Campo necessario per controllare l'unicità della matricola
+    private ObservableList<Utente> listaUtenti;
+
+    /**
+     * @brief Costruttore che riceve la lista degli utenti attuali. Necessario per verificare i duplicati.
+     * @param[in] listaUtenti La lista attuale degli utenti registrati.
+     */
+    public ValidaDatiUtente(ObservableList<Utente> listaUtenti) {
+        this.listaUtenti = listaUtenti;
+    }
     /**  
      * @brief Verifica che l'utente sia valido.
      * 
@@ -28,7 +41,22 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      */
     @Override
     public boolean isValido(Utente utente){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        //Controlli necessari per evitare di verificare valori null
+        if(utente == null) return false;
+        
+        boolean emailIsValid=true, matricolaIsValid=true;
+        
+        if(utente.getEmail() != null && !utente.getEmail().isEmpty()){
+            emailIsValid = verificaEmail(utente.getEmail());
+        }
+        
+        if(utente.getMatricola() != null && !utente.getMatricola().isEmpty()){
+            matricolaIsValid = verificaUnicitaMatricola(utente.getMatricola());
+        }
+        
+        
+        return emailIsValid && matricolaIsValid;
     }
     
     
@@ -45,7 +73,14 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      * @see FC-5
      */
     public boolean verificaEmail(String email){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        String dominio = "@studenti.unisa.it";
+        
+        if (!email.endsWith(dominio)) return false;
+        
+        //L'email deve essere più lunga del solo dominio. In caso contrario l'email
+        //sarà esattamente @studenti.unisa.it, e ciò non è accettabile.
+        return email.length() > dominio.length();
     }
     
     
@@ -61,6 +96,10 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
      * @see FC-4
      */
     public boolean verificaUnicitaMatricola(String matricola){
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        
+        for(Utente u : listaUtenti){
+            if(u.getMatricola().equalsIgnoreCase(matricola)) return false;
+        }
+        return true;
+    }
 }

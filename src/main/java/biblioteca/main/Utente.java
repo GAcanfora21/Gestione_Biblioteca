@@ -26,6 +26,13 @@ public class Utente {
     private String email;
     private int prestitiAttivi;
     
+    public Utente(String nome, String cognome, String matricola, String email, int prestitiAttivi){
+        this.nome = nome;
+        this.cognome = cognome;
+        this.matricola = matricola;
+        this.email = email;
+        this.prestitiAttivi = prestitiAttivi;
+    }
     
     public String getNome(){
         return this.nome;
@@ -81,6 +88,7 @@ public class Utente {
      * @see verificaLimitePrestito().
     */
     public void incrementaPrestiti(){
+        this.prestitiAttivi +=1;
         
     }
     
@@ -97,12 +105,15 @@ public class Utente {
      * @see IF-8
     */
     public void decrementaPrestiti(){
+        if (this.prestitiAttivi > 0) {
+            this.prestitiAttivi--;
+        }
         
     }
     
     @Override
     public String toString(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Utente: " + nome + " " + cognome + " (Matricola: " + matricola + ")";
     }
 }
     
