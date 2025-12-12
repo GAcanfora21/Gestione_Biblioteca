@@ -45,7 +45,7 @@ public class ValidaDatiUtente implements ValidaDati<Utente>{
         //Controlli necessari per evitare di verificare valori null
         if(utente == null) return false;
         
-        boolean emailIsValid=true, matricolaIsValid=true;
+        boolean emailIsValid=false, matricolaIsValid=false;
         
         if(utente.getEmail() != null && !utente.getEmail().isEmpty()){
             emailIsValid = verificaEmail(utente.getEmail());

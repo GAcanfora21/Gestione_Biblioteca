@@ -81,5 +81,4 @@ public class ValidaDatiUtenteTest {
         //risultato atteso: 'true'
         assertTrue(validatoreUtente.verificaUnicitaMatricola("06127ab"));
     }
-    
 }
