@@ -11,6 +11,7 @@ import java.io.Writer;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -163,7 +164,8 @@ public class Archivio {
                         
                     case "UTENTI":
                         //Ordine: Nome;Cognome;Matricola;Email;PrestitiAttivi
-                        Utente u = new Utente(field[0], field[1], field[2], field[3], Integer.parseInt(field[4]));
+                        Utente u = new Utente(field[0], field[1], field[2], field[3]);
+                        u.setPrestitiAttivi(Integer.parseInt(field[4]));
                         utenti.add(u);
                         break;
                         

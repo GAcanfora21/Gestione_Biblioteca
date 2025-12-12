@@ -92,9 +92,9 @@ public class GestioneLibri implements Gestore<Libro>{
         
         //Un for each di 'listLibri' necessaria per scorrere tutti gli elementi della lista e verificarne le uguaglianze con la stringa passata
         for(Libro l : listaLibri){
-            if((l.getAutori() != null && l.getAutori().equalsIgnoreCase(str)) ||
-               (l.getTitolo() != null && l.getTitolo().equalsIgnoreCase(str)) ||
-               (l.getCodiceIdentificativo() != null && l.getCodiceIdentificativo().equalsIgnoreCase(str))){
+            if((l.getAutori() != null && l.getAutori().contains(str)) ||
+               (l.getTitolo() != null && l.getTitolo().contains(str)) ||    
+               (l.getCodiceIdentificativo() != null && l.getCodiceIdentificativo().contains(str))){
             
                 result.add(l);
             }

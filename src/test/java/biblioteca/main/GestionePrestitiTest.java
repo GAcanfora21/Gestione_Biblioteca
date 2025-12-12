@@ -26,7 +26,7 @@ public class GestionePrestitiTest {
     @BeforeEach
     public void setUp(){
         lista = new GestionePrestiti(); 
-        u = new Utente("Alberto", "Smith", "23", "e@mail", 2);
+        u = new Utente("Alberto", "Smith", "23", "e@mail");
         l = new Libro("LOTR", "Tolkien", "2005", "59", 5);
         prestito = new Prestito(u,l,d);
     }

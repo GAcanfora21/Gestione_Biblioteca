@@ -44,7 +44,7 @@ public class GestioneLibriTest {
     @Test
     public void testCerca() {
         
-        ObservableList<Libro> result1 = listaLibri.cerca("biografia");
+        ObservableList<Libro> result1 = listaLibri.cerca("Biografia");
         ObservableList<Libro> result2 = listaLibri.cerca("Joe");
         ObservableList<Libro> result3 = listaLibri.cerca("0123456789");
         

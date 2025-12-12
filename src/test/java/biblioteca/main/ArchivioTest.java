@@ -36,7 +36,7 @@ public class ArchivioTest {
         listaLibri = new GestioneLibri();
         listaPrestiti = new GestionePrestiti();
         
-        utente = new Utente("Checco", "Zalone", "1234AB", "zalone@studenti.unisa.it", 0);
+        utente = new Utente("Checco", "Zalone", "1234AB", "zalone@studenti.unisa.it");
         libro = new Libro("Quo chi?", "Checco Zalone", "2022", "0123456789", 1);
         prestito = new Prestito(utente, libro, LocalDate.now().plusDays(10));
         nomeFile = "test.csv";

@@ -24,7 +24,7 @@ public class ValidaDatiUtenteTest {
     @BeforeEach
     public void setUp(){
         testList = FXCollections.observableArrayList();
-        utente = new Utente("A", "B", "1234AB", "test@studenti.unisa.it", 0);
+        utente = new Utente("A", "B", "1234AB", "test@studenti.unisa.it");
         testList.add(utente);
 
         validatoreUtente = new ValidaDatiUtente(testList);
@@ -34,17 +34,17 @@ public class ValidaDatiUtenteTest {
     public void testIsValido() {
         //primo caso di test, tutte le condizioni sono verificate
         //risultato atteso: 'true'
-        Utente nuovoUtente0 = new Utente("Pippo", "Baudo", "1111AB", "Pippo@studenti.unisa.it", 0);
+        Utente nuovoUtente0 = new Utente("Pippo", "Baudo", "1111AB", "Pippo@studenti.unisa.it");
         assertTrue(validatoreUtente.isValido(nuovoUtente0));
         
         //secondo caso di test, solo la condizione Email è verificata
         //risultato atteso: 'false'
-        Utente nuovoUtente1 = new Utente("Pippo", "Baudo", "1234AB", "Pippo@studenti.unisa.it", 0);
+        Utente nuovoUtente1 = new Utente("Pippo", "Baudo", "1234AB", "Pippo@studenti.unisa.it");
         assertFalse(validatoreUtente.isValido(nuovoUtente1));
         
         //terzo caso di test, solo la condizione UnicitaMatricola è verificata
         //risultato atteso: 'false'
-        Utente nuovoUtente2 = new Utente("Pippo", "Baudo", "1111AB", "@studenti.unisa.it", 0);
+        Utente nuovoUtente2 = new Utente("Pippo", "Baudo", "1111AB", "@studenti.unisa.it");
         assertFalse(validatoreUtente.isValido(nuovoUtente2));
         
         

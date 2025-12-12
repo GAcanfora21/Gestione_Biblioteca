@@ -26,7 +26,8 @@ public class ValidaDatiPrestitoTest {
     public void setUp(){
         validaP = new ValidaDatiPrestito();
         
-        u = new Utente("Alberto", "Smith", "23", "e@mail", 2);
+        u = new Utente("Alberto", "Smith", "23", "e@mail");
+        u.setPrestitiAttivi(2);
         l = new Libro("LOTR", "Tolkien", "2005", "59", 1);
         prestito = new Prestito(u,l,d);
     }

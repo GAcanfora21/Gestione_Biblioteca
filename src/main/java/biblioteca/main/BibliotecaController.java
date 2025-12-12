@@ -5,22 +5,30 @@
  */
 package biblioteca.main;
 
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -131,13 +139,34 @@ public class BibliotecaController implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Rimuove le tab dalla lista VISIBILE
+        
+        //Istruzioni necessarie per dire a javaFX come ottenere i dati di Libro,Utente e Prestito
+        //Istruzioni per Libro
+        titoloClm.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        autoriClm.setCellValueFactory(new PropertyValueFactory<>("autori"));
+        annoDiPubblicazioneClm.setCellValueFactory(new PropertyValueFactory<>("annoDiPubblicazione"));
+        codiceIdentificativoClm.setCellValueFactory(new PropertyValueFactory<>("codiceIdentificativo"));
+        copieClm.setCellValueFactory(new PropertyValueFactory<>("numCopie"));
+        
+        //Istruzioni per Utente
+        nomeClm.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        cognomeClm.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        emailClm.setCellValueFactory(new PropertyValueFactory<>("email"));
+        matricolaClm.setCellValueFactory(new PropertyValueFactory<>("matricola"));
+
+        //Istruzioni per Prestito
+        utentePrestitoClm.setCellValueFactory(new PropertyValueFactory<>("utente"));
+        libroPrestitoClm.setCellValueFactory(new PropertyValueFactory<>("libro"));
+        dataResoClm.setCellValueFactory(new PropertyValueFactory<>("dataRestituzione"));
+        
+        
+        //Rimuove le tab dalla lista VISIBILE
         tabMain.getTabs().remove(tabLibri);
         tabMain.getTabs().remove(tabUtenti);
         tabMain.getTabs().remove(tabPrestiti);
         
         
-        // La colonna 'restituzioneClm' sarà composta da checkbox
+        //La colonna 'restituzioneClm' sarà composta da checkbox
         restituzioneClm.setCellFactory(CheckBoxTableCell.forTableColumn(restituzioneClm));
         restituzioneClm.setEditable(true);
         
@@ -146,7 +175,26 @@ public class BibliotecaController implements Initializable{
         libriTable.setItems(listaLibri.getLibri());
         utentiTable.setItems(listaUtenti.getUtenti());
         prestitiTable.setItems(listaPrestiti.getPrestiti());
-    }
+        
+        
+        //Gestione del cambiamento della lista libri quando si effettua la ricerca una stringa nel textfield 'cercaLibriField'
+        cercaLibriField.textProperty().addListener((observable, vecchioValore, nuovoValore) -> {
+            
+            if (vecchioValore == null || nuovoValore.trim().isEmpty()) {
+            // Ripristina la lista originale completa
+            libriTable.setItems(listaLibri.getLibri());
+        }else{
+            libriTable.setItems(listaLibri.cerca(nuovoValore)); //Mi permette di cercare automaticamente mentre scrivo nel textfield
+        }
+        });
+        
+        //Gestione del salvataggio e caricamento file 
+        btnSalva.setOnAction(event -> salvaFile(event));
+        btnCarica.setOnAction(event -> caricaFile(event));
+        
+        
+
+}
     
     
     
@@ -234,7 +282,8 @@ public class BibliotecaController implements Initializable{
     
     @FXML
     private void cercaLibro(ActionEvent event) {
-        listaLibri.cerca(cercaLibriField.getText());
+        ObservableList<Libro> nuovaLista = listaLibri.cerca(cercaLibriField.getText());
+        libriTable.setItems(nuovaLista);
     }
 
     @FXML
@@ -249,22 +298,23 @@ public class BibliotecaController implements Initializable{
         
             listaLibri.aggiungi(libro);
             
-            //Collegamento colonna-parametro
-            titoloClm.setCellValueFactory(new PropertyValueFactory("titolo"));
-            autoriClm.setCellValueFactory(new PropertyValueFactory("autori"));
-            annoDiPubblicazioneClm.setCellValueFactory(new PropertyValueFactory("annoDiPubblicazione"));
-            codiceIdentificativoClm.setCellValueFactory(new PropertyValueFactory("codiceIdentificativo"));
-            copieClm.setCellValueFactory(new PropertyValueFactory("numCopie"));
         }
         
     }
 
     @FXML
     private void eliminaLibro(ActionEvent event) {
-        
+            
         Libro libro = libriTable.getSelectionModel().getSelectedItem();
-        
         listaLibri.elimina(libro);
+        
+        String testo = cercaLibriField.getText();
+        
+        if(testo != null && !testo.isEmpty()){
+            libriTable.setItems(listaLibri.cerca(testo));   //forzo il ricalcolo della ricerca sulla lista una volta che l'elemento è stato eliminato
+        }
+        
+        
     }
 
     
@@ -289,4 +339,68 @@ public class BibliotecaController implements Initializable{
         
     }
     
+    
+    @FXML
+    private void salvaFile(ActionEvent event){
+        
+        String percorso = "./salvataggi/";
+        //Assicuriamoci che la cartella esista, altrimenti la creiamo
+        File cartella = new File(percorso);
+        if (!cartella.exists()) {
+            cartella.mkdir();
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(percorso)); 
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
+        fileChooser.setInitialFileName("nomefile.csv");
+
+        //Mostra la finestra di salvataggio
+        File file = fileChooser.showSaveDialog(tabMain.getScene().getWindow());
+        
+        //mi evita messaggi di errore quando l'utente clicca annulla
+        if(file != null){
+        try{
+        Archivio.salvaFileCSV(file.getAbsolutePath(), listaLibri.getLibri(), listaUtenti.getUtenti(), listaPrestiti.getPrestiti());
+            mostraAlert(Alert.AlertType.INFORMATION, "File salvato con successo");
+        } catch (Exception ex){
+            mostraAlert(Alert.AlertType.ERROR, "Errore nel salvtaggio del File");
+        }
+        }
+     }
+    
+    @FXML
+    private void caricaFile(ActionEvent event){
+        
+        String percorso = "./salvataggi/";
+        File cartella = new File(percorso);
+        
+        if (!cartella.exists()) {
+            cartella.mkdir();
+        }
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(cartella);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("File CSV", "*.csv"));
+
+        //Mostra la finestra di caricamento
+        File file = fileChooser.showOpenDialog(tabMain.getScene().getWindow());
+
+        //mi evita messaggi di errore quando l'utente clicca annulla 
+        if (file != null) {
+        try{
+        Archivio.caricaFileCSV(file.getAbsolutePath(), listaLibri.getLibri(), listaUtenti.getUtenti(), listaPrestiti.getPrestiti());
+            mostraAlert(Alert.AlertType.INFORMATION, "File caricato con successo");
+        } catch (Exception ex){
+            mostraAlert(Alert.AlertType.ERROR, "Errore nel caricamento del File");
+        }
+        }
+     
+    }
+    
+    private void mostraAlert(Alert.AlertType type, String messaggio) {
+        Alert alert = new Alert(type);
+        alert.setContentText(messaggio);
+        alert.showAndWait();
+    }
 }

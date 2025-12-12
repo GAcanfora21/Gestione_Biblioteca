@@ -20,7 +20,8 @@ public class UtenteTest {
     @BeforeEach
     public void setUp(){
         // Creiamo l'utente con 1 prestito iniziale
-        u = new Utente("Antonio", "Crisci", "0612709486", "a.crisci14@studenti.unisa.it", 1);
+        u = new Utente("Antonio", "Crisci", "0612709486", "a.crisci14@studenti.unisa.it");
+        u.setPrestitiAttivi(1);
     }
 
     @Test

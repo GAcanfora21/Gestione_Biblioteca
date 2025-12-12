@@ -26,12 +26,12 @@ public class Utente {
     private String email;
     private int prestitiAttivi;
     
-    public Utente(String nome, String cognome, String matricola, String email, int prestitiAttivi){
+    public Utente(String nome, String cognome, String matricola, String email){
         this.nome = nome;
         this.cognome = cognome;
         this.matricola = matricola;
         this.email = email;
-        this.prestitiAttivi = prestitiAttivi;
+        this.prestitiAttivi = 0;
     }
     public String getNome(){
         return this.nome;
@@ -87,7 +87,7 @@ public class Utente {
      * @see verificaLimitePrestito().
     */
     public void incrementaPrestiti(){
-        this.prestitiAttivi +=1;
+        this.prestitiAttivi++;
         
     }
     

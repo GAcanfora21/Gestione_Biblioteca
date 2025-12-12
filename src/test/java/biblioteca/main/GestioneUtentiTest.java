@@ -25,7 +25,7 @@ public class GestioneUtentiTest {
     @BeforeEach
     public void setUp(){
         listaUtenti = new GestioneUtenti();
-        utente = new Utente("G", "Acanfora", "matricola", "test@studenti.unisa.it", 1);
+        utente = new Utente("G", "Acanfora", "matricola", "test@studenti.unisa.it");
         listaUtenti.aggiungi(utente);
     }
 
@@ -44,7 +44,7 @@ public class GestioneUtentiTest {
     @Test
     public void testCerca() {
         
-        ObservableList<Utente> result1 = listaUtenti.cerca("AcanFora");
+        ObservableList<Utente> result1 = listaUtenti.cerca("Acanfora");
         ObservableList<Utente> result2 = listaUtenti.cerca("matricola");
         
         //primo caso di test, l'elemento è presente è corrisponde

@@ -94,8 +94,8 @@ public class GestioneUtenti implements Gestore<Utente>{
         
         //Un for each di 'listLibri' necessaria per scorrere tutti gli elementi della lista e verificarne le uguaglianze con la stringa passata
         for(Utente u : listaUtenti){
-            if((u.getCognome()!= null && u.getCognome().equalsIgnoreCase(str)) ||
-               (u.getMatricola() != null && u.getMatricola().equalsIgnoreCase(str))){
+            if((u.getCognome()!= null && u.getCognome().contains(str)) ||
+               (u.getMatricola() != null && u.getMatricola().contains(str))){
             
                 result.add(u);
             }
