@@ -94,7 +94,7 @@ public class Archivio {
             for(Prestito p : prestiti){
                 pw.append(p.getUtente().getMatricola()).append(';');
                 pw.append(p.getLibro().getCodiceIdentificativo()).append(';');
-                pw.append(p.getDataRestituzione().toString());
+                pw.append(p.getDataRestituzione().toString()).append(';');
                 pw.println(p.getAttivo());
             }
             
@@ -137,33 +137,33 @@ public class Archivio {
         try(BufferedReader br = new BufferedReader(new FileReader(nomeFile))){
             
             String line;
-            String currentSection = ""; //Variabile per ricordare in quale sezione siamo
+            String currentSection =""; //Variabile per ricordare in quale sezione siamo
             
+            //leggo le prossime righe del file finché sono presenti
             while((line = br.readLine()) != null){
                 
-                line = line.trim(); 
                 if(line.isEmpty()) continue; //Salta righe vuote
                 
                 //Blocco che gestisce il cambio sezione
                 if(line.equals("LIBRI") || line.equals("UTENTI") || line.equals("PRESTITI")) {
-                    currentSection = line;
-                    br.readLine();
+                    currentSection = line;  //salva la sezione corrente
+                    br.readLine();          //legge e scarta la riga d'itenstazione
                     continue;
                 }
 
                 String[] field = line.split(";");
                 
-                // 2. PARSING DEI DATI IN BASE ALLA SEZIONE CORRENTE
+                //PARSING DEI DATI IN BASE ALLA SEZIONE CORRENTE
                 switch(currentSection) {
                     case "LIBRI":
                         //Ordine: Titolo;Autori;Anno;Codice;NumCopie
-                        Libro l = new Libro(field[0],field[1],(field[2]),field[3], Integer.parseInt(field[4]));
+                        Libro l = new Libro(field[0],field[1],field[2],field[3], Integer.parseInt(field[4]));
                         libri.add(l);
                         break;
                         
                     case "UTENTI":
-                        //Ordine: Nome;Cognome;Matricola;Email
-                        Utente u = new Utente(field[0], field[1], field[2], field[3]);
+                        //Ordine: Nome;Cognome;Matricola;Email;PrestitiAttivi
+                        Utente u = new Utente(field[0], field[1], field[2], field[3], Integer.parseInt(field[4]));
                         utenti.add(u);
                         break;
                         
@@ -171,14 +171,14 @@ public class Archivio {
                         //Ordine: MatricolaUtente;CodiceLibro;DataRestituzione;Attivo
                         String matricolaU = field[0];
                         String codiceL = field[1];
-                        String dataRest = field[2];
+                        LocalDate dataRest = LocalDate.parse(field[2]);
                         boolean attivo = Boolean.parseBoolean(field[3]);
                         
                         //Per creare un Prestito, ci servono gli oggetti Utente e Libro.
                         //Dobbiamo cercarli nelle liste
                         Utente utenteTrovato = null;
                         for(Utente tempU : utenti) {
-                            if(tempU.getMatricola().equals(matricolaU)) {
+                            if(tempU.getMatricola().equalsIgnoreCase(matricolaU)) {
                                 utenteTrovato = tempU;
                                 break;
                             }
@@ -186,22 +186,21 @@ public class Archivio {
                         
                         Libro libroTrovato = null;
                         for(Libro tempL : libri) {
-                            if(tempL.getCodiceIdentificativo().equals(codiceL)) {
+                            if(tempL.getCodiceIdentificativo().equalsIgnoreCase(codiceL)) {
                                 libroTrovato = tempL;
                                 break;
                             }
                         }
                         
-                        // Se li abbiamo trovati entrambi, creiamo il prestito
+                        //Se li abbiamo trovati entrambi, allora possiamo creare il prestito
                         if(utenteTrovato != null && libroTrovato != null) {
-                            Prestito p = new Prestito(utenteTrovato, libroTrovato, dataRest, attivo);
+                            Prestito p = new Prestito(utenteTrovato, libroTrovato, dataRest);
+                            p.setAttivo(attivo);
                             prestiti.add(p);
                         }
                         break;
                 }
             }
-            
-            
             
             
         } catch (IOException ex) {

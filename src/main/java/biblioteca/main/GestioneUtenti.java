@@ -37,7 +37,7 @@ public class GestioneUtenti implements Gestore<Utente>{
     
     
     public ObservableList<Utente> getUtenti(){
-        return listaUtenti;
+        return this.listaUtenti;
     }
     
     /**
