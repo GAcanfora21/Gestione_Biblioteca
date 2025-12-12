@@ -60,7 +60,6 @@ public class GestioneLibri implements Gestore<Libro>{
      *  
      * @param[in] libro Libro da rimuovere
      * @pre libro != null
-     * @pre Il libro da eliminare non deve avere prestiti attivi.
      * @post Il libro è stato rimosso dall'elenco.
      * 
      * @see IF-3

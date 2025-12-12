@@ -28,8 +28,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="salva" mnemonicParsing="false" text="Salva" />
-                  <MenuItem fx:id="carica" mnemonicParsing="false" text="Carica" />
+              <MenuItem fx:id="btnSalva" mnemonicParsing="false" text="Salva" />
+                  <MenuItem fx:id="btnCarica" mnemonicParsing="false" text="Carica" />
             </items>
           </Menu>
         </menus>
@@ -39,7 +39,7 @@
       <AnchorPane BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <TabPane prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabMain" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <tabs>
           <Tab fx:id="tabDashboard" text="Dashboard">
             <content>
@@ -109,7 +109,7 @@
                                           <Image url="@book.png" />
                                        </image>
                                     </ImageView>
-                                    <Button fx:id="buttonLibri" mnemonicParsing="false" onAction="#goToLibri" prefHeight="24.0" prefWidth="58.0" text="Libri" textAlignment="CENTER">
+                                    <Button fx:id="btnGoLibri" mnemonicParsing="false" onAction="#goToLibri" prefHeight="24.0" prefWidth="58.0" text="Libri" textAlignment="CENTER">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -117,7 +117,7 @@
                                           <Insets right="395.0" top="200.0" />
                                        </StackPane.margin>
                                     </Button>
-                                    <Button fx:id="buttonUtenti" layoutX="71.0" layoutY="219.0" mnemonicParsing="false" onAction="#goToUtenti" prefHeight="19.0" prefWidth="65.0" text="Utenti" textAlignment="CENTER">
+                                    <Button fx:id="btnGoUtenti" layoutX="71.0" layoutY="219.0" mnemonicParsing="false" onAction="#goToUtenti" prefHeight="19.0" prefWidth="65.0" text="Utenti" textAlignment="CENTER">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -125,7 +125,7 @@
                                           <Insets top="200.0" />
                                        </StackPane.margin>
                                     </Button>
-                                    <Button fx:id="buttonPrestiti" layoutX="267.0" layoutY="219.0" mnemonicParsing="false" onAction="#goToPrestiti" prefHeight="21.0" prefWidth="66.0" text="Prestiti" textAlignment="CENTER">
+                                    <Button fx:id="btnGoPrestiti" layoutX="267.0" layoutY="219.0" mnemonicParsing="false" onAction="#goToPrestiti" prefHeight="21.0" prefWidth="66.0" text="Prestiti" textAlignment="CENTER">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -261,8 +261,8 @@
                            <right>
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="aggiungiLibro" layoutX="2.0" layoutY="264.0" mnemonicParsing="false" text="Aggiungi" />
-                                    <Button fx:id="eliminaLibro" layoutX="95.0" layoutY="264.0" mnemonicParsing="false" text="Elimina" />
+                                    <Button fx:id="btnAggiungiLibro" layoutX="2.0" layoutY="264.0" mnemonicParsing="false" onAction="#aggiungiLibro" text="Aggiungi" />
+                                    <Button fx:id="btnEliminaLibro" layoutX="95.0" layoutY="264.0" mnemonicParsing="false" onAction="#eliminaLibro" text="Elimina" />
                                     <Label layoutX="1.0" layoutY="-7.0" text="Titolo">
                                        <font>
                                           <Font name="Verdana Bold" size="15.0" />
@@ -280,7 +280,7 @@
                                           <Font name="Verdana Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="annoField" layoutY="115.0" promptText="Anno di pubblicazione..." />
+                                    <TextField fx:id="annoField" layoutY="115.0" promptText="aa/mm/gg" />
                                     <Label layoutX="2.0" layoutY="202.0" text="Numero di copie">
                                        <font>
                                           <Font name="Verdana Bold" size="12.0" />
@@ -292,7 +292,7 @@
                                           <Font name="Verdana Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="codiceField1" layoutX="1.0" layoutY="166.0" promptText="Codice di 10 cifre..." />
+                                    <TextField fx:id="codiceField" layoutX="1.0" layoutY="166.0" promptText="Codice di 10 cifre..." />
                                  </children>
                                  <BorderPane.margin>
                                     <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
@@ -303,7 +303,7 @@
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
                                     <TextField fx:id="cercaLibriField" prefHeight="26.0" prefWidth="146.0" promptText="Titolo/autori/codice..." />
-                                    <Button fx:id="cercaLibro" layoutX="164.80000019073486" mnemonicParsing="false" text="Cerca" />
+                                    <Button fx:id="btnCercaLibro" layoutX="164.80000019073486" mnemonicParsing="false" onAction="#cercaLibro" text="Cerca" />
                                  </children>
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -311,13 +311,13 @@
                               </AnchorPane>
                            </top>
                            <center>
-                              <TableView fx:id="libri" prefHeight="301.0" prefWidth="423.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="libriTable" prefHeight="301.0" prefWidth="423.0" BorderPane.alignment="CENTER">
                                 <columns>
-                                  <TableColumn fx:id="titolo" onEditCommit="#updateTitolo" prefWidth="75.0" text="Titolo" />
-                                  <TableColumn fx:id="autori" onEditCommit="#updateAutori" prefWidth="75.0" text="Autori" />
-                                    <TableColumn fx:id="annoDiPubblicazione" onEditCommit="#updateAnno" prefWidth="115.19993591308594" text="Anno di pubblicazione" />
-                                    <TableColumn fx:id="codiceIdentificativo" onEditCommit="#updateCodice" prefWidth="91.20001220703125" text="Codice Identificativo" />
-                                    <TableColumn fx:id="copie" onEditCommit="#updateCopie" prefWidth="64.80002441406248" text="Copie" />
+                                  <TableColumn fx:id="titoloClm" onEditCommit="#updateTitolo" prefWidth="75.0" text="Titolo" />
+                                  <TableColumn fx:id="autoriClm" onEditCommit="#updateAutori" prefWidth="75.0" text="Autori" />
+                                    <TableColumn fx:id="annoDiPubblicazioneClm" onEditCommit="#updateAnno" prefWidth="115.19993591308594" text="Anno di pubblicazione" />
+                                    <TableColumn fx:id="codiceIdentificativoClm" onEditCommit="#updateCodice" prefWidth="91.20001220703125" text="Codice Identificativo" />
+                                    <TableColumn fx:id="copieClm" onEditCommit="#updateCopie" prefWidth="64.80002441406248" text="Copie" />
                                 </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="7.0" left="10.0" right="10.0" top="10.0" />
@@ -335,12 +335,12 @@
                      <children>
                         <BorderPane prefHeight="345.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
-                              <TableView fx:id="utenti" prefHeight="301.0" prefWidth="423.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="utentiTable" prefHeight="301.0" prefWidth="423.0" BorderPane.alignment="CENTER">
                                  <columns>
-                                    <TableColumn fx:id="nome" onEditCommit="#updateNome" prefWidth="75.0" text="Nome" />
-                                    <TableColumn fx:id="cognome" onEditCommit="#updateCognome" prefWidth="75.0" text="Cognome" />
-                                    <TableColumn fx:id="email" onEditCommit="#updateEmail" prefWidth="137.60003662109375" text="Email" />
-                                    <TableColumn fx:id="matricola" onEditCommit="#updateMatricola" prefWidth="132.79998779296875" text="Matricola" />
+                                    <TableColumn fx:id="nomeClm" onEditCommit="#updateNome" prefWidth="75.0" text="Nome" />
+                                    <TableColumn fx:id="cognomeClm" onEditCommit="#updateCognome" prefWidth="75.0" text="Cognome" />
+                                    <TableColumn fx:id="emailClm" onEditCommit="#updateEmail" prefWidth="137.60003662109375" text="Email" />
+                                    <TableColumn fx:id="matricolaClm" onEditCommit="#updateMatricola" prefWidth="132.79998779296875" text="Matricola" />
                                  </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -350,8 +350,8 @@
                            <right>
                               <AnchorPane prefHeight="240.0" prefWidth="150.0" BorderPane.alignment="CENTER_RIGHT">
                                  <children>
-                                    <Button fx:id="aggiungiUtente" layoutY="265.0" mnemonicParsing="false" text="Aggiungi" />
-                                    <Button fx:id="eliminaUtente" layoutX="95.0" layoutY="265.0" mnemonicParsing="false" text="Elimina" />
+                                    <Button fx:id="btnAggiungiUtente" layoutY="265.0" mnemonicParsing="false" onAction="#aggiungiUtente" text="Aggiungi" />
+                                    <Button fx:id="btnEliminaUtente" layoutX="95.0" layoutY="265.0" mnemonicParsing="false" onAction="#eliminaUtente" text="Elimina" />
                                     <Label layoutX="1.600006103515625" text="Nome">
                                        <font>
                                           <Font name="Verdana Bold" size="15.0" />
@@ -386,7 +386,7 @@
                               <AnchorPane prefHeight="26.0" prefWidth="275.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <TextField fx:id="cercaUtentiField" layoutY="0.39999961853027344" promptText="Cognome/matricola..." />
-                                    <Button fx:id="cercaUtente" layoutX="164.80000019073486" mnemonicParsing="false" text="Cerca" />
+                                    <Button fx:id="btnCercaUtente" layoutX="164.80000019073486" mnemonicParsing="false" onAction="#cercaUtente" text="Cerca" />
                                  </children>
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -404,12 +404,12 @@
                      <children>
                         <BorderPane prefHeight="345.6" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <center>
-                              <TableView fx:id="prestiti" prefHeight="349.0" prefWidth="422.0" BorderPane.alignment="CENTER">
+                              <TableView fx:id="prestitiTable" prefHeight="349.0" prefWidth="422.0" BorderPane.alignment="CENTER">
                                  <columns>
-                                    <TableColumn fx:id="utenteP" prefWidth="75.0" text="Utente" />
-                                    <TableColumn fx:id="libroP" prefWidth="75.0" text="Libro" />
-                                    <TableColumn fx:id="dataReso" prefWidth="171.19993591308594" text="Data per la restituzione" />
-                                    <TableColumn fx:id="restituzione" prefWidth="100.0" text="Restituzione" />
+                                    <TableColumn fx:id="utentePrestitoClm" prefWidth="75.0" text="Utente" />
+                                    <TableColumn fx:id="libroPrestitoClm" prefWidth="75.0" text="Libro" />
+                                    <TableColumn fx:id="dataResoClm" prefWidth="171.19993591308594" text="Data per la restituzione" />
+                                    <TableColumn fx:id="restituzioneClm" prefWidth="100.0" text="Restituzione" />
                                  </columns>
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -419,7 +419,7 @@
                            <right>
                               <AnchorPane BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="aggiungiPrestito" layoutX="46.4000244140625" layoutY="204.20001220703125" mnemonicParsing="false" text="Registra" />
+                                    <Button fx:id="btnAggiungiPrestito" layoutX="46.4000244140625" layoutY="204.20001220703125" mnemonicParsing="false" onAction="#aggiungiPrestito" text="Registra" />
                                     <Label layoutX="0.800018310546875" text="Utente">
                                        <font>
                                           <Font name="Verdana Bold" size="15.0" />
@@ -435,7 +435,7 @@
                                           <Font name="Verdana Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="dataResoField" layoutY="154.0" promptText="Data restituzione prevista..." />
+                                    <TextField fx:id="dataResoField" layoutY="154.0" promptText="aa/mm/gg" />
                                     <TextField fx:id="utentePrestitoField" layoutY="25.0" promptText="Cognome/matricola..." />
                                     <TextField fx:id="libroPrestitoField" layoutX="0.800018310546875" layoutY="91.0" promptText="Titolo/autori/codice..." />
                                  </children>
