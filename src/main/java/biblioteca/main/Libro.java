@@ -2,7 +2,7 @@ package biblioteca.main;
 
 /**
  * @file Libro.java
- * @brief Definisce attributi e metodi della classe Libro
+ * @brief Definisce attributi e metodi della classe Libro.
  * 
  * @invariant titolo != null
  * @invariant autori != null
@@ -27,7 +27,7 @@ public class Libro {
     private int numCopie;
     
     /**
-     * @brief costruttore di Libro
+     * @brief Costruttore di Libro
      * 
      * @param[in] titolo Titolo del libro.
      * @param[in] autori Autori del libro.
@@ -36,7 +36,11 @@ public class Libro {
      * @param[in] numCopie Numero di copie disponibili.
      */
     public Libro(String titolo, String autori, String annoDiPubblicazione, String codiceIdentificativo, int numCopie){
-        //
+        this.titolo = titolo;
+        this.autori = autori;
+        this.annoDiPubblicazione = annoDiPubblicazione;
+        this.codiceIdentificativo = codiceIdentificativo;
+        this.numCopie = numCopie;
     }
 
     public String getTitolo() {
@@ -87,21 +91,24 @@ public class Libro {
      */
     public void aggiungiCopie(){
         
+        this.numCopie++;
     }
     
     /**
-     * @brief decrementa di 1 il numero di copie dell'istanza di un libro
+     * @brief Decrementa di 1 il numero di copie dell'istanza di un libro.
      * 
      * @post libro.numCopie = libro.numCopie - 1
      */
     public void rimuoviCopie(){
         
+        this.numCopie--;
     }
     
     
     @Override
     public String toString(){
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "Titolo: " + this.titolo + "Autore/i: " + this.autori + "Anno di pubblicazione: " +
+                this.annoDiPubblicazione + "Codice identificativo: " + this.codiceIdentificativo + "Numero Copie: " + this.numCopie;
     }
     
 }

@@ -1,5 +1,7 @@
 package biblioteca.main;
 
+import javafx.collections.ObservableList;
+
 /**
  * @file ValidaDatiLibro.java
  * @brief Verifica il formato e l'univocità dell'identificativo di un libro.
@@ -17,23 +19,47 @@ package biblioteca.main;
 public class ValidaDatiLibro implements ValidaDati<Libro> {
     
     
+    // Campo necessario per controllare l'unicità del codice
+    private ObservableList<Libro> listaLibri;
+
     /**
-     * @brief Verifica se dati del libro inserito siano validi
+     * @brief Costruttore che riceve la lista dei libri attuali. Necessario per verificare i duplicati.
+     * @param[in] listaLibri La lista attuale dei libri registrati.
+     */
+    public ValidaDatiLibro(ObservableList<Libro> listaLibri) {
+        this.listaLibri = listaLibri;
+    }
+    
+    /**
+     * @brief Verifica se dati del libro inserito siano validi.
      * 
      * Questo metodo verifica che i dati di un libro rispettino i vincoli:
      * 1. Sia nel formato corretto (10 cifre) tramite verificaFormatoCodice()
      * 2. Sia univoco nell'archivio tramite verificaUnicitaCodice()
      * 
      * @pre libro != null.
-     * @post se return == false stampa messaggioErrore().
+     * @post se return == false mostra un messaggio di errore.
      * 
-     * @param[in] libro il libro da validare.
+     * @param[in] libro Il libro da validare.
      * @return 'true' se il libro supera tutti i controlli, 'false' altrimenti.
      */
     public boolean isValido(Libro libro){
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+        if(libro == null) return false;
+             
+        boolean formatoIsValido=false, codiceIsUnico=false;
+        
+        String codice = libro.getCodiceIdentificativo();
+        
+        //Controlla che ci sia un codice da verificare
+        if(libro.getCodiceIdentificativo() != null && !libro.getCodiceIdentificativo().isEmpty()){
+            formatoIsValido = verificaFormatoCodice(codice);
+            codiceIsUnico = verificaUnicitaCodice(codice);
         }
         
+        return formatoIsValido && codiceIsUnico;
+    } 
+    
     
     /**
      * @brief Verifica il formato del codice identificativo: 10 cifre (FC-3).
@@ -44,8 +70,11 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @param[in] codice Codice da validare.
      * @return 'true' se il formato codice è corretto, 'false' altrimenti.
      */
-    private boolean verificaFormatoCodice(String codice){
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean verificaFormatoCodice(String codice){
+      
+        if (codice.length()!=10) return false;
+        
+        return true;
     }
     
     
@@ -58,7 +87,12 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @param[in] codice Codice da validare.
      * @return 'true' se il codice è univoco, 'false' altrimenti.
      */
-    private boolean verificaUnicitaCodice(String codice){
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean verificaUnicitaCodice(String codice){
+        
+        for(Libro l : listaLibri){
+            if(l.getCodiceIdentificativo().equalsIgnoreCase(codice)) return false;
         }
+        
+        return true;
     }
+}
