@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -29,6 +31,8 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 
 /**
  *
@@ -130,7 +134,9 @@ public class BibliotecaController implements Initializable{
     private TableColumn<Prestito, Boolean> restituzioneClm;
     @FXML
     private Button btnAggiungiPrestito;
-
+    @FXML
+    private ComboBox<Utente> cmbUtente;
+    
     
     GestioneLibri listaLibri = new GestioneLibri();
     GestioneUtenti listaUtenti = new GestioneUtenti();
@@ -140,35 +146,47 @@ public class BibliotecaController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //Istruzioni necessarie per dire a javaFX come ottenere i dati di Libro,Utente e Prestito
-        //Istruzioni per Libro
-        titoloClm.setCellValueFactory(new PropertyValueFactory<>("titolo"));
-        autoriClm.setCellValueFactory(new PropertyValueFactory<>("autori"));
-        annoDiPubblicazioneClm.setCellValueFactory(new PropertyValueFactory<>("annoDiPubblicazione"));
-        codiceIdentificativoClm.setCellValueFactory(new PropertyValueFactory<>("codiceIdentificativo"));
-        copieClm.setCellValueFactory(new PropertyValueFactory<>("numCopie"));
-        
-        //Istruzioni per Utente
-        nomeClm.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        cognomeClm.setCellValueFactory(new PropertyValueFactory<>("cognome"));
-        emailClm.setCellValueFactory(new PropertyValueFactory<>("email"));
-        matricolaClm.setCellValueFactory(new PropertyValueFactory<>("matricola"));
-
-        //Istruzioni per Prestito
-        utentePrestitoClm.setCellValueFactory(new PropertyValueFactory<>("utente"));
-        libroPrestitoClm.setCellValueFactory(new PropertyValueFactory<>("libro"));
-        dataResoClm.setCellValueFactory(new PropertyValueFactory<>("dataRestituzione"));
-        
-        
         //Rimuove le tab dalla lista VISIBILE
         tabMain.getTabs().remove(tabLibri);
         tabMain.getTabs().remove(tabUtenti);
         tabMain.getTabs().remove(tabPrestiti);
         
         
-        //La colonna 'restituzioneClm' sarà composta da checkbox
-        restituzioneClm.setCellFactory(CheckBoxTableCell.forTableColumn(restituzioneClm));
-        restituzioneClm.setEditable(true);
+        //Colonne modificabili
+        //1. Sezione libri
+        titoloClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        autoriClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        annoDiPubblicazioneClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        codiceIdentificativoClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        copieClm.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));            
+        //2. Sezione utenti
+        nomeClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        cognomeClm.setCellFactory(TextFieldTableCell.forTableColumn());          
+        matricolaClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        emailClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        //3. Sezione prestiti
+        restituzioneClm.setCellFactory(CheckBoxTableCell.forTableColumn(restituzioneClm));  // La colonna 'restituzioneClm' 
+                                                                                            // sarà composta da checkbox
+        
+            
+        
+        
+        //Collegamento colonna-parametro
+        //1. Sezione libri
+        titoloClm.setCellValueFactory(new PropertyValueFactory("titolo"));
+        autoriClm.setCellValueFactory(new PropertyValueFactory("autori"));
+        annoDiPubblicazioneClm.setCellValueFactory(new PropertyValueFactory("annoDiPubblicazione"));
+        codiceIdentificativoClm.setCellValueFactory(new PropertyValueFactory("codiceIdentificativo"));
+        copieClm.setCellValueFactory(new PropertyValueFactory("numCopie"));
+        //2. Sezione utenti
+        nomeClm.setCellValueFactory(new PropertyValueFactory("nome"));
+        cognomeClm.setCellValueFactory(new PropertyValueFactory("cognome"));
+        matricolaClm.setCellValueFactory(new PropertyValueFactory("matricola"));
+        emailClm.setCellValueFactory(new PropertyValueFactory("email"));
+        //3. Sezione prestiti
+        
+        
+        
         
         
         //Collegamento TableView-Liste
@@ -176,28 +194,21 @@ public class BibliotecaController implements Initializable{
         utentiTable.setItems(listaUtenti.getUtenti());
         prestitiTable.setItems(listaPrestiti.getPrestiti());
         
+        //Collegamento ComboBox-Liste
+        cmbUtente.setItems(listaUtenti.getUtenti());
         
-        //Gestione del cambiamento della lista libri quando si effettua la ricerca una stringa nel textfield 'cercaLibriField'
-        cercaLibriField.textProperty().addListener((observable, vecchioValore, nuovoValore) -> {
-            
-            if (vecchioValore == null || nuovoValore.trim().isEmpty()) {
-            // Ripristina la lista originale completa
-            libriTable.setItems(listaLibri.getLibri());
-        }else{
-            libriTable.setItems(listaLibri.cerca(nuovoValore)); //Mi permette di cercare automaticamente mentre scrivo nel textfield
-        }
-        });
+        
+        cercaLibro();
+        
+        
         
         //Gestione del salvataggio e caricamento file 
         btnSalva.setOnAction(event -> salvaFile(event));
         btnCarica.setOnAction(event -> caricaFile(event));
-        
-        
-
-}
+    }
     
     
-    
+    //Navigazione tramite tabs
     @FXML
     private void goToLibri(ActionEvent event) {
         
@@ -233,57 +244,93 @@ public class BibliotecaController implements Initializable{
     
     
     
-    
+    //Modifiche Libro
     @FXML
-    private void updateTitolo(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateTitolo(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setTitolo(event.getNewValue());
     }
-
     @FXML
-    private void updateAutori(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateAutori(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setAutori(event.getNewValue());
     }
-
     @FXML
-    private void updateAnno(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateAnno(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setAnnoDiPubblicazione(event.getNewValue());
     }
-
     @FXML
-    private void updateCodice(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateCodice(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setCodiceIdentificativo(event.getNewValue());
     }
-
     @FXML
-    private void updateCopie(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    
-    
-    
-    
-    
-    
-    @FXML
-    private void updateNome(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    @FXML
-    private void updateCognome(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    @FXML
-    private void updateEmail(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    @FXML
-    private void updateMatricola(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateCopie(TableColumn.CellEditEvent<Libro, Integer> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setNumCopie(event.getNewValue());
     }
 
     
     
     
     
+    //Modifiche Utente
     @FXML
-    private void cercaLibro(ActionEvent event) {
-        ObservableList<Libro> nuovaLista = listaLibri.cerca(cercaLibriField.getText());
-        libriTable.setItems(nuovaLista);
+    private void updateNome(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setNome(event.getNewValue());
+    }
+    @FXML
+    private void updateCognome(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setCognome(event.getNewValue());
+    }
+    @FXML
+    private void updateEmail(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setEmail(event.getNewValue());
+    }
+    @FXML
+    private void updateMatricola(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setMatricola(event.getNewValue());
+    }
+
+    
+    
+    
+    
+    
+    public void cercaLibro() {
+        //Gestione del cambiamento della lista libri quando si effettua la ricerca una stringa nel textfield 'cercaLibriField'
+        cercaLibriField.textProperty().addListener((observable, vecchioValore, nuovoValore) -> {
+            
+            if (vecchioValore == null || nuovoValore.trim().isEmpty()) {
+                // Ripristina la lista originale completa
+                libriTable.setItems(listaLibri.getLibri());
+            }else{
+                libriTable.setItems(listaLibri.cerca(nuovoValore)); //Mi permette di cercare automaticamente mentre scrivo nel textfield
+            }
+        });
     }
 
     @FXML
@@ -313,8 +360,6 @@ public class BibliotecaController implements Initializable{
         if(testo != null && !testo.isEmpty()){
             libriTable.setItems(listaLibri.cerca(testo));   //forzo il ricalcolo della ricerca sulla lista una volta che l'elemento è stato eliminato
         }
-        
-        
     }
 
     
@@ -322,22 +367,45 @@ public class BibliotecaController implements Initializable{
     
     
     @FXML
-    private void cercaUtente(ActionEvent event) {
+    private void cercaUtente(ActionEvent event) { 
     }
 
     @FXML
     private void aggiungiUtente(ActionEvent event) {
+        
+        //Utente da inserire
+        Utente utente = new Utente(nomeField.getText(), cognomeField.getText(), matricolaField.getText(), emailField.getText());
+         
+        //Controllo validità
+        ValidaDatiUtente validatoreUtente = new ValidaDatiUtente(listaUtenti.getUtenti());
+        if(validatoreUtente.isValido(utente)){
+        
+            listaUtenti.aggiungi(utente);
+            
+        }
+        
     }
 
     @FXML
     private void eliminaUtente(ActionEvent event) {
     }
 
+    
+    
+    
+    
     @FXML
     private void aggiungiPrestito(ActionEvent event) {
         
+        //Prestito da registrare
+        //Prestito prestito = new Prestito(cmbUtente.getValue(), ...);
+         
+        //Controllo validità
         
     }
+
+    
+    
     
     
     @FXML
