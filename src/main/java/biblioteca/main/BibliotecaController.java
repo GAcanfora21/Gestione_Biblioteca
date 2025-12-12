@@ -8,11 +8,14 @@ package biblioteca.main;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -21,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 
 /**
  *
@@ -122,11 +127,14 @@ public class BibliotecaController implements Initializable{
     private TableColumn<Prestito, Boolean> restituzioneClm;
     @FXML
     private Button btnAggiungiPrestito;
-
+    @FXML
+    private ComboBox<Utente> cmbUtente;
+    
     
     GestioneLibri listaLibri = new GestioneLibri();
     GestioneUtenti listaUtenti = new GestioneUtenti();
     GestionePrestiti listaPrestiti = new GestionePrestiti();
+    
     
     
     @Override
@@ -137,19 +145,54 @@ public class BibliotecaController implements Initializable{
         tabMain.getTabs().remove(tabPrestiti);
         
         
-        // La colonna 'restituzioneClm' sarà composta da checkbox
-        restituzioneClm.setCellFactory(CheckBoxTableCell.forTableColumn(restituzioneClm));
-        restituzioneClm.setEditable(true);
+        //Colonne modificabili
+        //1. Sezione libri
+        titoloClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        autoriClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        annoDiPubblicazioneClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        codiceIdentificativoClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        copieClm.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));            
+        //2. Sezione utenti
+        nomeClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        cognomeClm.setCellFactory(TextFieldTableCell.forTableColumn());          
+        matricolaClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        emailClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        //3. Sezione prestiti
+        restituzioneClm.setCellFactory(CheckBoxTableCell.forTableColumn(restituzioneClm));  // La colonna 'restituzioneClm' 
+                                                                                            // sarà composta da checkbox
+        
+            
+        
+        
+        //Collegamento colonna-parametro
+        //1. Sezione libri
+        titoloClm.setCellValueFactory(new PropertyValueFactory("titolo"));
+        autoriClm.setCellValueFactory(new PropertyValueFactory("autori"));
+        annoDiPubblicazioneClm.setCellValueFactory(new PropertyValueFactory("annoDiPubblicazione"));
+        codiceIdentificativoClm.setCellValueFactory(new PropertyValueFactory("codiceIdentificativo"));
+        copieClm.setCellValueFactory(new PropertyValueFactory("numCopie"));
+        //2. Sezione utenti
+        nomeClm.setCellValueFactory(new PropertyValueFactory("nome"));
+        cognomeClm.setCellValueFactory(new PropertyValueFactory("cognome"));
+        matricolaClm.setCellValueFactory(new PropertyValueFactory("matricola"));
+        emailClm.setCellValueFactory(new PropertyValueFactory("email"));
+        //3. Sezione prestiti
+        
+        
+        
         
         
         //Collegamento TableView-Liste
         libriTable.setItems(listaLibri.getLibri());
         utentiTable.setItems(listaUtenti.getUtenti());
         prestitiTable.setItems(listaPrestiti.getPrestiti());
+        
+        //Collegamento ComboBox-Liste
+        cmbUtente.setItems(listaUtenti.getUtenti());
     }
     
     
-    
+    //Navigazione tramite tabs
     @FXML
     private void goToLibri(ActionEvent event) {
         
@@ -185,56 +228,83 @@ public class BibliotecaController implements Initializable{
     
     
     
-    
+    //Modifiche Libro
     @FXML
-    private void updateTitolo(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateTitolo(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setTitolo(event.getNewValue());
     }
-
     @FXML
-    private void updateAutori(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateAutori(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setAutori(event.getNewValue());
     }
-
     @FXML
-    private void updateAnno(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateAnno(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setAnnoDiPubblicazione(event.getNewValue());
     }
-
     @FXML
-    private void updateCodice(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateCodice(TableColumn.CellEditEvent<Libro, String> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setCodiceIdentificativo(event.getNewValue());
     }
-
     @FXML
-    private void updateCopie(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    
-    
-    
-    
-    
-    
-    @FXML
-    private void updateNome(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    @FXML
-    private void updateCognome(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    @FXML
-    private void updateEmail(TableColumn.CellEditEvent<?, ?> event) {
-    }
-
-    @FXML
-    private void updateMatricola(TableColumn.CellEditEvent<?, ?> event) {
+    private void updateCopie(TableColumn.CellEditEvent<Libro, Integer> event) {
+        
+        Libro libro = event.getRowValue();
+        
+        libro.setNumCopie(event.getNewValue());
     }
 
     
     
     
     
+    //Modifiche Utente
     @FXML
-    private void cercaLibro(ActionEvent event) {
-        listaLibri.cerca(cercaLibriField.getText());
+    private void updateNome(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setNome(event.getNewValue());
+    }
+    @FXML
+    private void updateCognome(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setCognome(event.getNewValue());
+    }
+    @FXML
+    private void updateEmail(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setEmail(event.getNewValue());
+    }
+    @FXML
+    private void updateMatricola(TableColumn.CellEditEvent<Utente, String> event) {
+        
+        Utente utente = event.getRowValue();
+        
+        utente.setMatricola(event.getNewValue());
+    }
+
+    
+    
+    
+    
+    @FXML
+    private void cercaLibro(ActionEvent event) {   
     }
 
     @FXML
@@ -249,22 +319,12 @@ public class BibliotecaController implements Initializable{
         
             listaLibri.aggiungi(libro);
             
-            //Collegamento colonna-parametro
-            titoloClm.setCellValueFactory(new PropertyValueFactory("titolo"));
-            autoriClm.setCellValueFactory(new PropertyValueFactory("autori"));
-            annoDiPubblicazioneClm.setCellValueFactory(new PropertyValueFactory("annoDiPubblicazione"));
-            codiceIdentificativoClm.setCellValueFactory(new PropertyValueFactory("codiceIdentificativo"));
-            copieClm.setCellValueFactory(new PropertyValueFactory("numCopie"));
         }
         
     }
 
     @FXML
-    private void eliminaLibro(ActionEvent event) {
-        
-        Libro libro = libriTable.getSelectionModel().getSelectedItem();
-        
-        listaLibri.elimina(libro);
+    private void eliminaLibro(ActionEvent event) {   
     }
 
     
@@ -272,21 +332,44 @@ public class BibliotecaController implements Initializable{
     
     
     @FXML
-    private void cercaUtente(ActionEvent event) {
+    private void cercaUtente(ActionEvent event) { 
     }
 
     @FXML
     private void aggiungiUtente(ActionEvent event) {
+        
+        //Utente da inserire
+        Utente utente = new Utente(nomeField.getText(), cognomeField.getText(), matricolaField.getText(), emailField.getText());
+         
+        //Controllo validità
+        ValidaDatiUtente validatoreUtente = new ValidaDatiUtente(listaUtenti.getUtenti());
+        if(validatoreUtente.isValido(utente)){
+        
+            listaUtenti.aggiungi(utente);
+            
+        }
+        
     }
 
     @FXML
     private void eliminaUtente(ActionEvent event) {
     }
 
+    
+    
+    
+    
     @FXML
     private void aggiungiPrestito(ActionEvent event) {
         
+        //Prestito da registrare
+        //Prestito prestito = new Prestito(cmbUtente.getValue(), ...);
+         
+        //Controllo validità
         
     }
+
+    
+    
     
 }
