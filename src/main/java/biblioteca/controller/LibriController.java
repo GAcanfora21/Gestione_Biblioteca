@@ -8,12 +8,14 @@ package biblioteca.controller;
 
 import biblioteca.main.GestioneLibri;
 import biblioteca.main.Libro;
-import biblioteca.main.ValidaDatiLibro;
+import biblioteca.validatori.MessaggiDiControllo;
+import biblioteca.validatori.ValidaDatiLibro;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -143,6 +145,13 @@ public class LibriController implements Initializable {
             annoField.clear();
             copieField.clear();
             codiceField.clear();
+        }else if(titoloField.getText().isEmpty() || autoriField.getText().isEmpty() ||
+                annoField.getText().isEmpty() || copieField.getText().isEmpty() || codiceField.getText().isEmpty()){
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Inserisci tutti i campi presenti");
+        }else{
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Formato codice non valido:\n"
+                    + "1) Il formato codice deve avere una lunghezza di 10 caratteri, no caratteri speciali e/o spazi.\n"
+                    + "2) Il codice identificativo non deve essere già presente nella lista");      
         }
     }
 

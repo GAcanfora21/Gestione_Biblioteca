@@ -1,4 +1,4 @@
-package biblioteca.main;
+package biblioteca.validatori;
 
 /**
  * @file ValidaDati.java

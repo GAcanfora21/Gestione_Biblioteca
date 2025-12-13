@@ -1,5 +1,6 @@
-package biblioteca.main;
+package biblioteca.validatori;
 
+import biblioteca.main.Libro;
 import javafx.collections.ObservableList;
 
 /**
@@ -34,7 +35,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      * @brief Verifica se dati del libro inserito siano validi.
      * 
      * Questo metodo verifica che i dati di un libro rispettino i vincoli:
-     * 1. Sia nel formato corretto (10 cifre) tramite verificaFormatoCodice()
+     * 1. Sia nel formato corretto (10 caratteri) tramite verificaFormatoCodice()
      * 2. Sia univoco nell'archivio tramite verificaUnicitaCodice()
      * 
      * @pre libro != null.
@@ -62,7 +63,7 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
     
     
     /**
-     * @brief Verifica il formato del codice identificativo: 10 cifre (FC-3).
+     * @brief Verifica il formato del codice identificativo: 10 caratteri (FC-3).
      * 
      * 
      * @pre 'codice != null', il parametro d'ingresso deve essere non nullo.
@@ -72,9 +73,8 @@ public class ValidaDatiLibro implements ValidaDati<Libro> {
      */
     public boolean verificaFormatoCodice(String codice){
       
-        if (codice.length()!=10) return false;
-        
-        return true;
+        return codice.matches("[A-Za-z0-9]{10}");
+
     }
     
     

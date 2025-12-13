@@ -1,5 +1,6 @@
-package biblioteca.main;
+package biblioteca.validatori;
 
+import biblioteca.main.Utente;
 import javafx.collections.ObservableList;
 
 /**

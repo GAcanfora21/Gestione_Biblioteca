@@ -24,6 +24,9 @@
                   <TableColumn fx:id="matricolaClm" onEditCommit="#updateMatricola" prefWidth="107.19998168945312" text="Matricola" />
                </columns>
                <BorderPane.margin><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></BorderPane.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </center>
          <right>

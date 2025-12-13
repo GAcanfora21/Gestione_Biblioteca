@@ -8,12 +8,14 @@ package biblioteca.controller;
 
 import biblioteca.main.GestioneUtenti;
 import biblioteca.main.Utente;
-import biblioteca.main.ValidaDatiUtente;
+import biblioteca.validatori.ValidaDatiUtente;
+import biblioteca.validatori.MessaggiDiControllo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -127,6 +129,12 @@ public class UtentiController implements Initializable {
             matricolaField.clear();
             emailField.clear();
             
+        }else if(nomeField.getText().isEmpty() || cognomeField.getText().isEmpty() || emailField.getText().isEmpty() || matricolaField.getText().isEmpty()){
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Inserisci tutti i campi presenti");
+        }else{
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Formato email non valida/Matricola già presente:\n"
+                    + "1) Dominio email accettato: *@studenti.unisa.it.\n"
+                    + "2) La matricola deve essere univoca.");      
         }
         
     }

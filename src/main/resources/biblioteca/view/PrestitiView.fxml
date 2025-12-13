@@ -19,10 +19,13 @@
                <columns>
                   <TableColumn fx:id="utentePrestitoClm" prefWidth="85.60003507137299" text="Utente" />
                   <TableColumn fx:id="libroPrestitoClm" prefWidth="91.99994659423828" text="Libro" />
-                  <TableColumn fx:id="dataResoClm" prefWidth="142.4000244140625" text="Data per la restituzione" />
+                  <TableColumn fx:id="dataResoClm" prefWidth="142.4000244140625" sortType="DESCENDING" text="Data per la restituzione" />
                   <TableColumn fx:id="restituzioneClm" prefWidth="92.80000610351561" text="Restituzione" />
                </columns>
                <BorderPane.margin><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></BorderPane.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </center>
          <right>

@@ -57,11 +57,14 @@
                <columns>
                   <TableColumn fx:id="titoloClm" onEditCommit="#updateTitolo" prefWidth="75.0" text="Titolo" />
                   <TableColumn fx:id="autoriClm" onEditCommit="#updateAutori" prefWidth="75.0" text="Autori" />
-                  <TableColumn fx:id="annoDiPubblicazioneClm" onEditCommit="#updateAnno" prefWidth="82.4000244140625" text=" Anno pubblicazione" />
-                  <TableColumn fx:id="codiceIdentificativoClm" onEditCommit="#updateCodice" prefWidth="115.20001220703125" text="Codice" />
-                  <TableColumn fx:id="copieClm" onEditCommit="#updateCopie" prefWidth="56.800006103515614" text="Copie" />
+                  <TableColumn fx:id="annoDiPubblicazioneClm" onEditCommit="#updateAnno" prefWidth="94.4000244140625" text=" Anno pubblicazione" />
+                  <TableColumn fx:id="codiceIdentificativoClm" onEditCommit="#updateCodice" prefWidth="89.5999755859375" text="Codice" />
+                  <TableColumn fx:id="copieClm" onEditCommit="#updateCopie" prefWidth="52.800048828125" text="Copie" />
                </columns>   
                <BorderPane.margin><Insets bottom="7.0" left="10.0" right="10.0" top="10.0" /></BorderPane.margin>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
          </center>
       </BorderPane>

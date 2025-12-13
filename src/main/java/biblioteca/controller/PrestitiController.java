@@ -12,7 +12,8 @@ import biblioteca.main.GestioneUtenti;
 import biblioteca.main.Libro;
 import biblioteca.main.Prestito;
 import biblioteca.main.Utente;
-import biblioteca.main.ValidaDatiPrestito;
+import biblioteca.validatori.ValidaDatiPrestito;
+import biblioteca.validatori.MessaggiDiControllo;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -99,7 +100,7 @@ public class PrestitiController implements Initializable {
         
         // Controllo campi vuoti
         if (utente == null || libro == null || data == null) {
-            mostraAlert(Alert.AlertType.WARNING, "Dati mancanti: Seleziona Utente, Libro e Data.");
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.WARNING, "Dati mancanti: Seleziona Utente, Libro e Data.");
             return;
         }
         
@@ -135,17 +136,16 @@ public class PrestitiController implements Initializable {
             comboLibro.getSelectionModel().clearSelection();
             dataRest.setValue(null);
             
-            mostraAlert(Alert.AlertType.INFORMATION, "Prestito registrato con successo!");
             
         }else{
             if (!validatorePrestito.verificaDisponibilitaCopie(libro.getNumCopie())) {
-                mostraAlert(Alert.AlertType.ERROR, "Copie del libro esaurite! Impossibile registrare.");
+                MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Copie del libro esaurite! Impossibile registrare.");
             } 
             else if (!validatorePrestito.verificaLimitePrestito(utente.getPrestitiAttivi())) {
-                mostraAlert(Alert.AlertType.ERROR, "L'utente ha raggiunto il limite massimo di 3 prestiti attivi.");
+                MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "L'utente ha raggiunto il limite massimo di 3 prestiti attivi.");
             } 
             else {
-                mostraAlert(Alert.AlertType.ERROR, "I dati del prestito non sono validi.");
+                MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "I dati del prestito non sono validi.");
             }
         }
         
@@ -175,7 +175,7 @@ public class PrestitiController implements Initializable {
                         checkBox.setDisable(true);
                         prestitiTable.refresh();
                         if (libriController != null) libriController.refreshTable();
-                        mostraAlert(Alert.AlertType.INFORMATION, "Libro restituito con successo.");
+                        MessaggiDiControllo.mostraAlert(Alert.AlertType.INFORMATION, "Libro restituito con successo.");
                     } else {
                         checkBox.setSelected(false);
                     }
@@ -221,9 +221,4 @@ public class PrestitiController implements Initializable {
     }
     
     
-    private void mostraAlert(Alert.AlertType type, String messaggio) {
-        Alert alert = new Alert(type);
-        alert.setContentText(messaggio);
-        alert.showAndWait();
-    }
 }

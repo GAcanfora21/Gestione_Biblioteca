@@ -12,6 +12,7 @@ import biblioteca.main.Archivio;
 import biblioteca.main.GestioneLibri;
 import biblioteca.main.GestionePrestiti;
 import biblioteca.main.GestioneUtenti;
+import biblioteca.validatori.MessaggiDiControllo;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -123,9 +124,9 @@ public class MainController implements Initializable {
         if(file != null){
         try{
         Archivio.salvaFileCSV(file.getAbsolutePath(), listaLibri.getLibri(), listaUtenti.getUtenti(), listaPrestiti.getPrestiti());
-            mostraAlert(Alert.AlertType.INFORMATION, "File salvato con successo");
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.INFORMATION, "File salvato con successo");
         } catch (Exception ex){
-            mostraAlert(Alert.AlertType.ERROR, "Errore nel salvtaggio del File");
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Errore nel salvtaggio del File");
         }
         }
      }
@@ -151,17 +152,12 @@ public class MainController implements Initializable {
         if (file != null) {
         try{
         Archivio.caricaFileCSV(file.getAbsolutePath(), listaLibri.getLibri(), listaUtenti.getUtenti(), listaPrestiti.getPrestiti());
-            mostraAlert(Alert.AlertType.INFORMATION, "File caricato con successo");
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.INFORMATION, "File caricato con successo");
         } catch (Exception ex){
-            mostraAlert(Alert.AlertType.ERROR, "Errore nel caricamento del File");
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Errore nel caricamento del File");
         }
         }
      
     }
     
-    private void mostraAlert(Alert.AlertType type, String messaggio) {
-        Alert alert = new Alert(type);
-        alert.setContentText(messaggio);
-        alert.showAndWait();
-    }
 }
