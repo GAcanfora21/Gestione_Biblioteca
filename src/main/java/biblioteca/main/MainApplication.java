@@ -16,9 +16,9 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/biblioteca/view/BibliotecaView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/biblioteca/view/MainView.fxml"));
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 800, 600);
         stage.setTitle("Gestione Biblioteca");
         stage.setScene(scene);
         stage.show();

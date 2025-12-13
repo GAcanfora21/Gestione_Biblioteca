@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="biblioteca.main.MainController">
+   <top>
+      <MenuBar>
+        <menus>
+          <Menu text="File">
+            <items>
+              <MenuItem fx:id="btnSalva" text="Salva" />
+              <MenuItem fx:id="btnCarica" text="Carica" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   
+   <center>
+      <TabPane fx:id="tabMain" prefHeight="400.0" prefWidth="600.0">
+        <tabs>
+          <Tab fx:id="tabDashboard" closable="false" text="Dashboard">
+            <content>
+              <AnchorPane>
+                <children>
+                        <VBox alignment="CENTER" layoutX="21.0" layoutY="142.0" prefHeight="151.0" prefWidth="550.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="334.0" spacing="25.0">
+                                 <children>
+                                    <TextArea editable="false" prefHeight="76.0" prefWidth="127.0" text="- Visualizza Libri&#10;- Modifica Libri&#10;- Elimina Libri">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                    <TextArea editable="false" prefHeight="76.0" prefWidth="140.0" text="- Visualizza Utenti&#10;- Modifica Utenti&#10;- Elimina Utenti">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                    <TextArea editable="false" prefHeight="76.0" prefWidth="142.0" text="- Visualizza Prestiti&#10;- Registra Prestiti&#10;- Restituisci Prestiti">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="39.0" prefWidth="402.0" spacing="105.0">
+                                 <children>
+                              <Button fx:id="btnGoLibri" onAction="#goToLibri" prefHeight="25.0" prefWidth="58.0" text="Libri">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                              <Button fx:id="btnGoUtenti" onAction="#goToUtenti" text="Utenti">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                              <Button fx:id="btnGoPrestiti" onAction="#goToPrestiti" text="Prestiti">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="78.0" layoutY="36.0">
+                           <image>
+                              <Image url="@book.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="237.0" layoutY="36.0">
+                           <image>
+                              <Image url="@multiple-users-silhouette.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="402.0" layoutY="36.0">
+                           <image>
+                              <Image url="@books-stack-of-three.png" />
+                           </image>
+                        </ImageView>
+                </children>
+              </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabLibri" text="Libri">
+            <content>
+              <fx:include fx:id="libriView" source="LibriView.fxml" />
+            </content>
+          </Tab>
+          
+          <Tab fx:id="tabUtenti" text="Utenti">
+            <content>
+              <fx:include fx:id="utentiView" source="UtentiView.fxml" />
+            </content>
+          </Tab>
+          
+          <Tab fx:id="tabPrestiti" text="Prestiti">
+            <content>
+              <fx:include fx:id="prestitiView" source="PrestitiView.fxml" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
