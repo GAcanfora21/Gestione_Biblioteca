@@ -18,7 +18,7 @@ public class MainApplication extends Application {
         
         Parent root = FXMLLoader.load(getClass().getResource("/biblioteca/view/MainView.fxml"));
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 650, 450);
         stage.setTitle("Gestione Biblioteca");
         stage.setScene(scene);
         stage.show();

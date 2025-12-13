@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="biblioteca.main.MainController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="biblioteca.controller.MainController">
    <top>
       <MenuBar>
         <menus>
@@ -60,7 +60,7 @@
                                  <children>
                                     <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.14" HBox.hgrow="ALWAYS">
                                        <image>
-                                          <Image url="@book.png" />
+                                          <Image url="@images/book.png" />
                                        </image>
                                        <HBox.margin>
                                           <Insets left="30.0" />
@@ -68,7 +68,7 @@
                                     </ImageView>
                                     <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.14" HBox.hgrow="ALWAYS">
                                        <image>
-                                          <Image url="@books-stack-of-three.png" />
+                                          <Image url="@images/books-stack-of-three.png" />
                                        </image>
                                        <HBox.margin>
                                           <Insets left="80.0" />
@@ -76,7 +76,7 @@
                                     </ImageView>
                                     <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.14" HBox.hgrow="ALWAYS">
                                        <image>
-                                          <Image url="@multiple-users-silhouette.png" />
+                                          <Image url="@images/multiple-users-silhouette.png" />
                                        </image>
                                        <HBox.margin>
                                           <Insets left="80.0" right="30.0" />

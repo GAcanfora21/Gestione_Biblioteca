@@ -112,7 +112,7 @@ public class Utente {
     
     @Override
     public String toString(){
-        return "Utente: " + nome + " " + cognome + " (Matricola: " + matricola + ")";
+        return "" + nome + " " + cognome + " (Matricola: " + matricola + ")";
     }
 }
     

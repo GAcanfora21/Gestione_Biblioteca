@@ -107,8 +107,8 @@ public class Libro {
     
     @Override
     public String toString(){
-        return "Titolo: " + this.titolo + "Autore/i: " + this.autori + "Anno di pubblicazione: " +
-                this.annoDiPubblicazione + "Codice identificativo: " + this.codiceIdentificativo + "Numero Copie: " + this.numCopie;
+        return "'" + this.titolo + "'" + " di " + this.autori + " (" +
+                this.annoDiPubblicazione + ") " + " |" + this.codiceIdentificativo + "| " + "| Numero copie: " + this.numCopie;
     }
     
 }

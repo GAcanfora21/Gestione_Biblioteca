@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="biblioteca.main.UtentiController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="biblioteca.controller.UtentiController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -30,7 +30,7 @@
             <AnchorPane prefWidth="150.0" BorderPane.alignment="CENTER_RIGHT">
                <children>
                   <Button fx:id="btnAggiungiUtente" layoutY="265.0" mnemonicParsing="false" onAction="#aggiungiUtente" text="Aggiungi" />
-                  <Button fx:id="btnEliminaUtente" layoutX="95.0" layoutY="265.0" mnemonicParsing="false" onAction="#eliminaUtente" text="Elimina" />
+                  <Button fx:id="btnEliminaUtente" alignment="CENTER_RIGHT" layoutX="115.0" layoutY="265.0" mnemonicParsing="false" onAction="#eliminaUtente" text="Elimina" />
                   <Label layoutX="1.0" text="Nome"><font><Font name="Verdana Bold" size="15.0" /></font></Label>
                   <TextField fx:id="nomeField" layoutY="27.0" promptText="Nome..." />
                   <Label layoutX="2.0" layoutY="64.0" text="Cognome"><font><Font name="Verdana Bold" size="15.0" /></font></Label>
@@ -46,10 +46,10 @@
          <top>
             <AnchorPane prefHeight="26.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="cercaUtentiField" promptText="Cognome/matricola..." />
-                  <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="155.0" layoutY="3.0">
+                  <TextField fx:id="cercaUtentiField" prefHeight="26.0" prefWidth="149.0" promptText="Cognome/matricola..." />
+                  <ImageView fitHeight="22.0" fitWidth="23.0" layoutX="162.0" layoutY="3.0">
                      <image>
-                        <Image url="@magnifying-glass.png" />
+                        <Image url="@images/magnifying-glass.png" />
                      </image>
                   </ImageView>
                </children>

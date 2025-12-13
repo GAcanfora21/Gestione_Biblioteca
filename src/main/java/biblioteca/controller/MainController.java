@@ -1,4 +1,4 @@
-package biblioteca.main;
+package biblioteca.controller;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,8 +6,12 @@ package biblioteca.main;
  * and open the template in the editor.
  */
 
-import biblioteca.main.LibriController;
+import biblioteca.controller.LibriController;
 import biblioteca.main.Archivio;
+import biblioteca.main.Archivio;
+import biblioteca.main.GestioneLibri;
+import biblioteca.main.GestionePrestiti;
+import biblioteca.main.GestioneUtenti;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package biblioteca.main;
+package biblioteca.controller;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,6 +6,13 @@ package biblioteca.main;
  * and open the template in the editor.
  */
 
+import biblioteca.main.GestioneLibri;
+import biblioteca.main.GestionePrestiti;
+import biblioteca.main.GestioneUtenti;
+import biblioteca.main.Libro;
+import biblioteca.main.Prestito;
+import biblioteca.main.Utente;
+import biblioteca.main.ValidaDatiPrestito;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -48,7 +55,7 @@ public class PrestitiController implements Initializable {
     private GestioneLibri listaLibri;
     private GestioneUtenti listaUtenti;
 
-    // Aggiunto un riferimento al Controller dei Libri per poter aggiornare la sua tabella
+    // Riferimento al Controller dei Libri per poter aggiornare la sua tabella
     private LibriController libriController;
     
     /**
@@ -101,16 +108,30 @@ public class PrestitiController implements Initializable {
         
         if(validatorePrestito.isValido(prestito)){
             //Successo
-            listaPrestiti.registraPrestito(prestito);           // aggiungo il prestito nella sua lista
+            listaPrestiti.registraPrestito(prestito);           // Aggiunge il prestito nella sua lista
             
-            // Aggiornamento la tabella prestiti
+            // Aggiornamento della tabella prestiti
             prestitiTable.refresh();                            // Aggiorna la vista della tabella
             // Aggiorna la tabella dei libri nell'altra schermata
             if (libriController != null) {
                 libriController.refreshTable();
             }
             
-            comboUtente.getSelectionModel().clearSelection();   // Pulisce i campi
+            
+            // Aggiornamento numero copie libro in tabella libri
+            // Trova l'indice del libro modificato nella lista originale
+            int indiceLibro = listaLibri.getLibri().indexOf(libro);
+
+            // Lo "sovrascrive" con se stesso. 
+            // Questo lancia un evento "Update" che costringe la ComboBox a ridisegnare la riga.
+            if (indiceLibro >= 0) {
+                listaLibri.getLibri().set(indiceLibro, libro);
+            }
+            
+            
+            
+            // Pulizia campi
+            comboUtente.getSelectionModel().clearSelection();
             comboLibro.getSelectionModel().clearSelection();
             dataRest.setValue(null);
             
