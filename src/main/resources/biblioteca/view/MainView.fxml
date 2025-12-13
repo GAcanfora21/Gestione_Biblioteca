@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,63 +37,151 @@
             <content>
               <AnchorPane>
                 <children>
-                        <VBox alignment="CENTER" layoutX="21.0" layoutY="142.0" prefHeight="151.0" prefWidth="550.0">
+                        <VBox alignment="CENTER" layoutX="20.8" layoutY="16.0" prefHeight="318.0" prefWidth="558.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="16.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="334.0" spacing="25.0">
+                              <VBox alignment="CENTER" prefHeight="60.0" prefWidth="558.0">
                                  <children>
-                                    <TextArea editable="false" prefHeight="76.0" prefWidth="127.0" text="- Visualizza Libri&#10;- Modifica Libri&#10;- Elimina Libri">
+                                    <Label text="Dashboard">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial Black" size="27.0" />
                                        </font>
-                                    </TextArea>
-                                    <TextArea editable="false" prefHeight="76.0" prefWidth="140.0" text="- Visualizza Utenti&#10;- Modifica Utenti&#10;- Elimina Utenti">
+                                    </Label>
+                                    <Label text="Selezionare l'area desiderata...">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Arial Italic" size="22.0" />
                                        </font>
-                                    </TextArea>
-                                    <TextArea editable="false" prefHeight="76.0" prefWidth="142.0" text="- Visualizza Prestiti&#10;- Registra Prestiti&#10;- Restituisci Prestiti">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextArea>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="522.0">
+                                 <children>
+                                    <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.14" HBox.hgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@book.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.14" HBox.hgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@books-stack-of-three.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="80.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <ImageView fitHeight="100.0" fitWidth="100.0" opacity="0.14" HBox.hgrow="ALWAYS">
+                                       <image>
+                                          <Image url="@multiple-users-silhouette.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="80.0" right="30.0" />
+                                       </HBox.margin>
+                                    </ImageView>
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="39.0" prefWidth="402.0" spacing="105.0">
+                              <HBox alignment="CENTER" prefHeight="76.0" prefWidth="571.0">
+                                 <children>
+                                    <VBox prefHeight="76.0" prefWidth="113.0">
+                                       <children>
+                                          <Label text="- Visualizza libri">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="10.0" text="- Modifica libri">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="32.0" text="- Elimina libri">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="20.0" right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="397.0" layoutY="10.0" prefHeight="76.0" prefWidth="126.0">
+                                       <children>
+                                          <Label text="- Visualizza utenti">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="10.0" text="- Modifica utenti">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="32.0" text="- Elimina utenti">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox layoutX="456.0" layoutY="10.0" prefHeight="76.0" prefWidth="152.0">
+                                       <children>
+                                          <Label text="- Visualizza prestiti">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="10.0" text="- Registra restituzioni">
+                                             <font>
+                                                <Font name="Calibri Italic" size="17.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="40.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="39.0" prefWidth="402.0" spacing="110.0">
                                  <children>
                               <Button fx:id="btnGoLibri" onAction="#goToLibri" prefHeight="25.0" prefWidth="58.0" text="Libri">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
                                     </Button>
                               <Button fx:id="btnGoUtenti" onAction="#goToUtenti" text="Utenti">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
                                     </Button>
                               <Button fx:id="btnGoPrestiti" onAction="#goToPrestiti" text="Prestiti">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
                                     </Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="78.0" layoutY="36.0">
-                           <image>
-                              <Image url="@book.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="237.0" layoutY="36.0">
-                           <image>
-                              <Image url="@multiple-users-silhouette.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="402.0" layoutY="36.0">
-                           <image>
-                              <Image url="@books-stack-of-three.png" />
-                           </image>
-                        </ImageView>
                 </children>
               </AnchorPane>
             </content>

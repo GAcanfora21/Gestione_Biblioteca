@@ -19,7 +19,7 @@
             <AnchorPane BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btnAggiungiLibro" layoutX="2.0" layoutY="264.0" mnemonicParsing="false" onAction="#aggiungiLibro" text="Aggiungi" />
-                  <Button fx:id="btnEliminaLibro" layoutX="91.0" layoutY="264.0" mnemonicParsing="false" onAction="#eliminaLibro" text="Elimina" />
+                  <Button fx:id="btnEliminaLibro" layoutX="96.0" layoutY="264.0" mnemonicParsing="false" onAction="#eliminaLibro" text="Elimina" />
                   
                   <Label layoutX="1.0" layoutY="-7.0" text="Titolo"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
                   <TextField fx:id="titoloField" layoutY="12.0" promptText="Titolo..." />
@@ -27,11 +27,11 @@
                   <Label layoutX="2.0" layoutY="44.0" text="Autori"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
                   <TextField fx:id="autoriField" layoutX="1.0" layoutY="64.0" promptText="Autori..." />
                   
-                  <Label layoutX="2.0" layoutY="98.0" text="Anno"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
-                  <TextField fx:id="annoField" layoutY="115.0" promptText="aa/mm/gg" />
+                  <Label layoutX="2.0" layoutY="98.0" prefHeight="18.0" prefWidth="148.0" text="Anno di pubblicazione"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
+                  <TextField fx:id="annoField" layoutY="115.0" promptText="AAAA" />
                   
-                  <Label layoutX="1.0" layoutY="149.0" text="Codice"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
-                  <TextField fx:id="codiceField" layoutX="1.0" layoutY="166.0" promptText="Codice..." />
+                  <Label layoutX="1.0" layoutY="149.0" prefHeight="18.0" prefWidth="150.0" text="Codice identificativo"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
+                  <TextField fx:id="codiceField" layoutX="1.0" layoutY="166.0" promptText="Codice di 10 cifre..." />
                   
                   <Label layoutX="1.0" layoutY="200.0" text="Copie"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
                   <TextField fx:id="copieField" layoutY="218.0" promptText="Numero di copie..." />
@@ -57,7 +57,7 @@
                <columns>
                   <TableColumn fx:id="titoloClm" onEditCommit="#updateTitolo" prefWidth="75.0" text="Titolo" />
                   <TableColumn fx:id="autoriClm" onEditCommit="#updateAutori" prefWidth="75.0" text="Autori" />
-                  <TableColumn fx:id="annoDiPubblicazioneClm" onEditCommit="#updateAnno" prefWidth="82.4000244140625" text="Anno" />
+                  <TableColumn fx:id="annoDiPubblicazioneClm" onEditCommit="#updateAnno" prefWidth="82.4000244140625" text=" Anno pubblicazione" />
                   <TableColumn fx:id="codiceIdentificativoClm" onEditCommit="#updateCodice" prefWidth="115.20001220703125" text="Codice" />
                   <TableColumn fx:id="copieClm" onEditCommit="#updateCopie" prefWidth="56.800006103515614" text="Copie" />
                </columns>   

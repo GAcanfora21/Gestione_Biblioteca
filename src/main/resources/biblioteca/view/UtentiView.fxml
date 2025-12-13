@@ -30,13 +30,13 @@
             <AnchorPane prefWidth="150.0" BorderPane.alignment="CENTER_RIGHT">
                <children>
                   <Button fx:id="btnAggiungiUtente" layoutY="265.0" mnemonicParsing="false" onAction="#aggiungiUtente" text="Aggiungi" />
-                  <Button fx:id="btnEliminaUtente" layoutX="92.0" layoutY="265.0" mnemonicParsing="false" onAction="#eliminaUtente" text="Elimina" />
+                  <Button fx:id="btnEliminaUtente" layoutX="95.0" layoutY="265.0" mnemonicParsing="false" onAction="#eliminaUtente" text="Elimina" />
                   <Label layoutX="1.0" text="Nome"><font><Font name="Verdana Bold" size="15.0" /></font></Label>
                   <TextField fx:id="nomeField" layoutY="27.0" promptText="Nome..." />
                   <Label layoutX="2.0" layoutY="64.0" text="Cognome"><font><Font name="Verdana Bold" size="15.0" /></font></Label>
                   <TextField fx:id="cognomeField" layoutY="91.0" promptText="Cognome..." />
                   <Label layoutX="1.0" layoutY="130.0" text="Email"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
-                  <TextField fx:id="emailField" layoutY="154.0" promptText="Email..." />
+                  <TextField fx:id="emailField" layoutY="154.0" promptText="*@studenti.unisa.it" />
                   <Label layoutX="1.0" layoutY="195.0" text="Matricola"><font><Font name="Verdana Bold" size="14.0" /></font></Label>
                   <TextField fx:id="matricolaField" layoutY="217.0" promptText="Matricola..." />
                </children>
