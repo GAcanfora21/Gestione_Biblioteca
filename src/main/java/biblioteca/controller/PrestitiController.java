@@ -112,11 +112,9 @@ public class PrestitiController implements Initializable {
             listaPrestiti.registraPrestito(prestito);           // Aggiunge il prestito nella sua lista
             
             // Aggiornamento della tabella prestiti
-            prestitiTable.refresh();                            // Aggiorna la vista della tabella
+            prestitiTable.refresh();                            
             // Aggiorna la tabella dei libri nell'altra schermata
-            if (libriController != null) {
-                libriController.refreshTable();
-            }
+            if (libriController != null) libriController.refreshTable();
             
             
             // Aggiornamento numero copie libro in tabella libri
@@ -124,7 +122,7 @@ public class PrestitiController implements Initializable {
             int indiceLibro = listaLibri.getLibri().indexOf(libro);
 
             // Lo "sovrascrive" con se stesso. 
-            // Questo lancia un evento "Update" che costringe la ComboBox a ridisegnare la riga.
+            // Questo lancia un evento "update" che costringe la ComboBox a ridisegnare la riga.
             if (indiceLibro >= 0) {
                 listaLibri.getLibri().set(indiceLibro, libro);
             }
@@ -154,29 +152,35 @@ public class PrestitiController implements Initializable {
 
     //Configura la colonna con le CheckBox per gestire la restituzione.
     private void spuntaRestituzione() {
-        
+    
+    
     restituzioneClm.setCellValueFactory(cellData -> 
-        new SimpleBooleanProperty(!cellData.getValue().getAttivo())
+        new SimpleBooleanProperty(!cellData.getValue().getAttivo()) // Se prestito è attivo, allora la casella deve essere vuota (false)
     );
     
+    // Definisco una nuova cella su ogni riga del prestito registrato
     restituzioneClm.setCellFactory(column -> new TableCell<Prestito, Boolean>() {
         private final CheckBox checkBox = new CheckBox();
         
-        {
+        {   
             checkBox.setOnAction(e -> {
-                Prestito prestito = getTableView().getItems().get(getIndex());
+                Prestito prestito = getTableView().getItems().get(getIndex());  // recupero l'oggetto prestito dalla riga cliccata
                 
+                // Controllo di sicurezza
                 if (prestito != null && checkBox.isSelected()) {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Confermi la restituzione del libro?", ButtonType.OK, ButtonType.CANCEL);
                     alert.setTitle("Conferma Restituzione");
                     
+                    // L'utente conferma la scelta
                     if (alert.showAndWait().filter(btn -> btn == ButtonType.OK).isPresent()) {
                         listaPrestiti.registraRestituzione(prestito);
                         checkBox.setDisable(true);
                         prestitiTable.refresh();
                         if (libriController != null) libriController.refreshTable();
+                        
                         MessaggiDiControllo.mostraAlert(Alert.AlertType.INFORMATION, "Libro restituito con successo.");
                     } else {
+                        // l'utente annulla la selezione
                         checkBox.setSelected(false);
                     }
                 }
@@ -186,12 +190,19 @@ public class PrestitiController implements Initializable {
         @Override
         protected void updateItem(Boolean restituito, boolean empty) {
             super.updateItem(restituito, empty);
+            
+            // Se la riga è vuota (non c'è prestito qui), non mostrare nulla
             if (empty || restituito == null) {
                 setGraphic(null);
             } else {
+                
+                // Imposta lo stato della spunta
                 checkBox.setSelected(restituito);
+                
+                // Se è già restituito (restituito == true), disabilita la checkbox
                 checkBox.setDisable(restituito);
-                setGraphic(checkBox);
+                
+                setGraphic(checkBox); // Mostra la checkbox nella cella
             }
         }
     });
