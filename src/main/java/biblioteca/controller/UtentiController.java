@@ -143,6 +143,12 @@ public class UtentiController implements Initializable {
     private void eliminaUtente(ActionEvent event) {
         
         Utente utente = utentiTable.getSelectionModel().getSelectedItem();
+        
+        if(utente.getPrestitiAttivi() > 0){
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Non è possibile cancellare un utente che ha un prestito attivo");
+            return;
+        }
+        
         listaUtenti.elimina(utente);
         
         String testo = cercaUtentiField.getText();

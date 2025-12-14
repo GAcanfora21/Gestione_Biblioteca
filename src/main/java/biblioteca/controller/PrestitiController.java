@@ -88,7 +88,6 @@ public class PrestitiController implements Initializable {
         comboUtente.setItems(listaUtenti.getUtenti());
         comboLibro.setItems(listaLibri.getLibri());
         
-        
     }
 
     @FXML

@@ -25,6 +25,7 @@ public class Libro {
     private String annoDiPubblicazione;
     private String codiceIdentificativo;
     private int numCopie;
+    private boolean prestato;
     
     /**
      * @brief Costruttore di Libro
@@ -41,6 +42,7 @@ public class Libro {
         this.annoDiPubblicazione = annoDiPubblicazione;
         this.codiceIdentificativo = codiceIdentificativo;
         this.numCopie = numCopie;
+        this.prestato = false;
     }
 
     public String getTitolo() {
@@ -62,6 +64,10 @@ public class Libro {
     public int getNumCopie() {
         return numCopie;
     }
+    
+    public boolean getPrestato(){
+        return prestato;
+    }
 
     public void setTitolo(String titolo) {
         this.titolo = titolo;
@@ -81,6 +87,10 @@ public class Libro {
 
     public void setNumCopie(int numCopie) {
         this.numCopie = numCopie;
+    }
+    
+    public void setPrestato(boolean prestato) {
+        this.prestato = prestato;
     }
     
 

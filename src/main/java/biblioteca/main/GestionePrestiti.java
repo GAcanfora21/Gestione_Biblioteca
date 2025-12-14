@@ -59,6 +59,7 @@ public class GestionePrestiti {
         if(prestito.getLibro().getNumCopie() > 0 && prestito.getUtente().getPrestitiAttivi() < 3){
             listaPrestiti.add(prestito);
             prestito.getLibro().rimuoviCopie();
+            prestito.getLibro().setPrestato(true);
             prestito.getUtente().incrementaPrestiti();
         }
         else{
@@ -84,6 +85,7 @@ public class GestionePrestiti {
         if(prestito != null){
             prestito.setAttivo(false);
             prestito.getLibro().aggiungiCopie();
+            prestito.getLibro().setPrestato(false);
             prestito.getUtente().decrementaPrestiti();
         }
         else{

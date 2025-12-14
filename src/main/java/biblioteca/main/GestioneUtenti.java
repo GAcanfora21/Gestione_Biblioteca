@@ -92,7 +92,7 @@ public class GestioneUtenti implements Gestore<Utente>{
         //Creo una lista temporanea vuota dove andrò a inserire i vari risultati ottenuti
         ObservableList<Utente> result = FXCollections.observableArrayList();
         
-        //Un for each di 'listLibri' necessaria per scorrere tutti gli elementi della lista e verificarne le uguaglianze con la stringa passata
+        // Blocco necessario per popolare la lista con elementi che contengono la stringa passata
         for(Utente u : listaUtenti){
             if((u.getCognome()!= null && u.getCognome().contains(str)) ||
                (u.getMatricola() != null && u.getMatricola().contains(str))){

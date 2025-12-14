@@ -90,7 +90,7 @@ public class GestioneLibri implements Gestore<Libro>{
         //Creo una lista temporanea vuota dove andrò a inserire i vari risultati ottenuti
         ObservableList<Libro> result = FXCollections.observableArrayList();
         
-        //Un for each di 'listLibri' necessaria per scorrere tutti gli elementi della lista e verificarne le uguaglianze con la stringa passata
+        // Blocco necessario per popolare la lista con elementi che contengono la stringa passata
         for(Libro l : listaLibri){
             if((l.getAutori() != null && l.getAutori().contains(str)) ||
                (l.getTitolo() != null && l.getTitolo().contains(str)) ||    

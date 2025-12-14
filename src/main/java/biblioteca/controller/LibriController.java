@@ -7,6 +7,7 @@ package biblioteca.controller;
  */
 
 import biblioteca.main.GestioneLibri;
+import biblioteca.main.GestionePrestiti;
 import biblioteca.main.Libro;
 import biblioteca.validatori.MessaggiDiControllo;
 import biblioteca.validatori.ValidaDatiLibro;
@@ -157,12 +158,21 @@ public class LibriController implements Initializable {
 
     @FXML
     private void eliminaLibro(ActionEvent event) {
-            
-        Libro libro = libriTable.getSelectionModel().getSelectedItem();
+        
+        Libro libro = libriTable.getSelectionModel().getSelectedItem();     // Libro selezionato dalla tabella
+        
+        // Controllo libro in prestito
+        if(libro.getPrestato()){
+            MessaggiDiControllo.mostraAlert(Alert.AlertType.ERROR, "Non è possibile cancellare un libro preso in prestito");
+            return;
+        }
+        
+        // Successo
         listaLibri.elimina(libro);
         
         String testo = cercaLibriField.getText();
         
+        //
         if(testo != null && !testo.isEmpty()){
             libriTable.setItems(listaLibri.cerca(testo));   //forzo il ricalcolo della ricerca sulla lista una volta che l'elemento è stato eliminato
         }
