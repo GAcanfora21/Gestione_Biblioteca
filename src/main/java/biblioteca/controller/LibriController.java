@@ -133,7 +133,8 @@ public class LibriController implements Initializable {
     private void aggiungiLibro(ActionEvent event) {
         
         //Libro da inserire
-        Libro libro = new Libro(titoloField.getText(), autoriField.getText(), annoField.getText(), codiceField.getText(), Integer.parseInt(copieField.getText()));
+        Libro libro = new Libro(titoloField.getText(), autoriField.getText(), annoField.getText(),
+                codiceField.getText(), copieField.getText().isEmpty() ? 0 : Integer.parseInt(copieField.getText()));
          
         //Controllo validità
         ValidaDatiLibro validatoreLibro = new ValidaDatiLibro(listaLibri.getLibri());
